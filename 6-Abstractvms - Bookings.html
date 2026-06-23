@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#F3F4F6]">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings - Abstractvms Client Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sora: ['Sora', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#172554',
+                        blue: '#1D4ED8',
+                        purple: '#5B2E91',
+                        lightgrey: '#F3F4F6',
+                        success: '#16A34A',
+                        warning: '#F59E0B',
+                        danger: '#DC2626',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: minmax(200px, auto) repeat(7, minmax(120px, 1fr));
+        }
+        .schedule-cell {
+            border-right: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body class="h-full m-0 p-0 overflow-hidden antialiased text-gray-800 flex bg-[#F3F4F6]">
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="w-64 bg-navy h-screen flex-shrink-0 flex flex-col border-r border-navy/20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-white/10 shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-blue flex items-center justify-center text-white font-sora font-bold text-xl">A</div>
+                <span class="text-xl font-sora font-bold text-white tracking-tight">Abstract<span class="text-blue-300">vms</span></span>
+            </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex-1 overflow-y-auto py-6 px-3">
+            <nav class="space-y-1">
+                <a href="1-Abstractvms - Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-chart-pie w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Dashboard</span>
+                </a>
+                <a href="2-Abstractvms - Business Units.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-building w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Business Units</span>
+                </a>
+                <a href="3-Abstractvms - Users & Permissi.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-users-gear w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Users & Permissions</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Recruitment</p>
+                </div>
+                <a href="4-Abstractvms - Vacancies.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-briefcase w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Vacancies</span>
+                </a>
+                <a href="6-Abstractvms - Bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-blue text-white group transition-colors duration-200 border-l-4 border-white">
+                    <i class="fa-solid fa-clipboard-list w-5 text-center text-white"></i>
+                    <span class="text-sm font-medium">Bookings</span>
+                </a>
+                <a href="10-Abstractvms - Candidate Direct.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-address-card w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Candidate Directory</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Finance</p>
+                </div>
+                <a href="7-Abstractvms - Timesheets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clock w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Timesheets</span>
+                </a>
+                <a href="8-Abstractvms - Invoices.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Invoices</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="9-Abstractvms - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-chart-line w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Reports</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- User Profile -->
+        <div class="border-t border-white/10 p-4 shrink-0">
+            <div class="flex items-center gap-3 w-full">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User Avatar" class="h-9 w-9 rounded-full object-cover border border-gray-600">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate font-sora">Sarah Jenkins</p>
+                    <p class="text-xs text-gray-400 truncate">Client Admin</p>
+                </div>
+                <a href="11-Abstractvms - Sign In.html" class="text-gray-400 hover:text-white transition-colors" title="Sign Out">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Header -->
+        <header id="header" class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0 shadow-sm z-10">
+            <div class="flex items-center gap-4">
+                <h1 class="text-xl font-sora font-semibold text-navy">Bookings & Placements</h1>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <!-- Search -->
+                <div class="relative w-64 hidden md:block">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-blue focus:border-blue sm:text-sm transition-all" placeholder="Search bookings...">
+                </div>
+
+                <!-- Notifications -->
+                <button class="relative text-gray-500 hover:text-navy transition-colors">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-white ring-2 ring-white">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main id="main-content" class="flex-1 overflow-y-auto p-6 bg-[#F3F4F6]">
+            <div class="max-w-[1600px] mx-auto space-y-6">
+
+                <!-- Controls Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3">
+                        <button class="px-3 py-1.5 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-chevron-left text-gray-400"></i>
+                        </button>
+                        <button class="px-4 py-1.5 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors">
+                            Today
+                        </button>
+                        <button class="px-3 py-1.5 border border-gray-300 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                        </button>
+                        <div class="h-6 w-px bg-gray-300 mx-2"></div>
+                        <span class="text-sm font-medium text-gray-700 font-sora">Oct 21, 2024 - Oct 27, 2024</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <select class="block w-48 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue focus:border-blue sm:text-sm rounded-md border bg-gray-50">
+                            <option>Midlands Dist. (All)</option>
+                            <option>North Hub</option>
+                            <option>South East Center</option>
+                        </select>
+                        <div class="flex border border-gray-300 rounded-md overflow-hidden">
+                            <button class="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium border-r border-gray-300 hover:bg-gray-200 transition-colors">Day</button>
+                            <button class="px-3 py-1.5 bg-blue text-white text-sm font-medium hover:bg-navy transition-colors">Week</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Scheduled Hours</p>
+                        <div class="flex items-end gap-2">
+                            <h3 class="text-2xl font-bold text-navy font-sora">842</h3>
+                            <span class="text-sm text-gray-500 mb-1">hrs</span>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Est. Weekly Spend</p>
+                        <div class="flex items-end gap-2">
+                            <h3 class="text-2xl font-bold text-navy font-sora">£14,250</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Active Placements</p>
+                        <div class="flex items-end gap-2">
+                            <h3 class="text-2xl font-bold text-navy font-sora">24</h3>
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-success/10 text-success mb-1">
+                                <i class="fa-solid fa-arrow-up text-[10px]"></i> 2
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 border-l-4 border-l-warning">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Action Required</p>
+                        <div class="flex items-end gap-2">
+                            <h3 class="text-2xl font-bold text-warning font-sora">3</h3>
+                            <span class="text-sm text-gray-500 mb-1">unfilled shifts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Grid Area -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    
+                    <!-- Grid Header -->
+                    <div class="schedule-grid bg-gray-50 border-b border-gray-200 sticky top-0 z-10">
+                        <div class="p-3 border-r border-gray-200 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-navy font-sora">Role / Candidate</span>
+                        </div>
+                        <div class="p-3 border-r border-gray-200 text-center">
+                            <div class="text-sm font-bold text-navy">Mon 21</div>
+                            <div class="text-xs text-gray-500 mt-1">£2,100 est.</div>
+                        </div>
+                        <div class="p-3 border-r border-gray-200 text-center">
+                            <div class="text-sm font-bold text-navy">Tue 22</div>
+                            <div class="text-xs text-gray-500 mt-1">£2,100 est.</div>
+                        </div>
+                        <div class="p-3 border-r border-gray-200 text-center bg-blue/5">
+                            <div class="text-sm font-bold text-blue">Wed 23</div>
+                            <div class="text-xs text-blue mt-1">£2,100 est.</div>
+                        </div>
+                        <div class="p-3 border-r border-gray-200 text-center">
+                            <div class="text-sm font-bold text-navy">Thu 24</div>
+                            <div class="text-xs text-gray-500 mt-1">£2,100 est.</div>
+                        </div>
+                        <div class="p-3 border-r border-gray-200 text-center">
+                            <div class="text-sm font-bold text-navy">Fri 25</div>
+                            <div class="text-xs text-gray-500 mt-1">£2,100 est.</div>
+                        </div>
+                        <div class="p-3 border-r border-gray-200 text-center bg-gray-100">
+                            <div class="text-sm font-bold text-gray-600">Sat 26</div>
+                            <div class="text-xs text-gray-500 mt-1">£1,875 est.</div>
+                        </div>
+                        <div class="p-3 text-center bg-gray-100">
+                            <div class="text-sm font-bold text-gray-600">Sun 27</div>
+                            <div class="text-xs text-gray-500 mt-1">£1,875 est.</div>
+                        </div>
+                    </div>
+
+                    <!-- Department Row: Warehouse Operative -->
+                    <div class="bg-gray-800 text-white p-2 px-4 text-sm font-semibold tracking-wide border-b border-gray-200 flex justify-between items-center">
+                        <span>Warehouse Operatives (Nights)</span>
+                        <span class="text-xs font-normal text-gray-300">Target Headcount: 4</span>
+                    </div>
+
+                    <!-- Worker Row 1 -->
+                    <div class="schedule-grid border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <div class="p-3 border-r border-gray-100 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue/10 flex items-center justify-center text-blue font-bold text-xs shrink-0">MJ</div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-navy truncate">Marcus Johnson</p>
+                                <div class="flex items-center gap-1 mt-0.5">
+                                    <i class="fa-solid fa-shield-check text-[10px] text-success"></i>
+                                    <p class="text-[10px] text-gray-500 truncate">Apex Staffing</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-blue/5">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-gray-50 flex items-center justify-center">
+                            <span class="text-xs text-gray-400 font-medium">Off</span>
+                        </div>
+                        <div class="p-2 bg-gray-50 flex items-center justify-center">
+                            <span class="text-xs text-gray-400 font-medium">Off</span>
+                        </div>
+                    </div>
+
+                    <!-- Worker Row 2 -->
+                    <div class="schedule-grid border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <div class="p-3 border-r border-gray-100 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-purple/10 flex items-center justify-center text-purple font-bold text-xs shrink-0">SW</div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-navy truncate">Sarah Williams</p>
+                                <div class="flex items-center gap-1 mt-0.5">
+                                    <i class="fa-solid fa-triangle-exclamation text-[10px] text-warning"></i>
+                                    <p class="text-[10px] text-gray-500 truncate">Rapid Recruit</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-gray-50 flex items-center justify-center">
+                            <span class="text-xs text-gray-400 font-medium">Off</span>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-gray-50 flex items-center justify-center">
+                            <span class="text-xs text-gray-400 font-medium">Off</span>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-blue/5">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-success/10 border border-success/20 rounded p-1.5 h-full cursor-pointer hover:bg-success/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £16.50/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-gray-50">
+                            <div class="bg-purple/10 border border-purple/20 rounded p-1.5 h-full cursor-pointer hover:bg-purple/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £18.50/h (WE)</div>
+                            </div>
+                        </div>
+                        <div class="p-2 bg-gray-50">
+                            <div class="bg-purple/10 border border-purple/20 rounded p-1.5 h-full cursor-pointer hover:bg-purple/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">22:00 - 06:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £18.50/h (WE)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Unfilled Needs Row -->
+                    <div class="schedule-grid border-b border-gray-100 bg-red-50/30">
+                        <div class="p-3 border-r border-gray-100 flex items-center">
+                            <span class="text-sm font-medium text-danger"><i class="fa-solid fa-circle-plus mr-2"></i> Unfilled Shifts</span>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 flex items-center justify-center">
+                            <button class="w-full h-full min-h-[40px] border border-dashed border-danger/30 rounded bg-white hover:bg-danger/5 transition-colors text-danger text-xs font-medium flex flex-col items-center justify-center">
+                                <span>+ Add</span>
+                                <span class="text-[10px] text-gray-500 mt-0.5">1 needed</span>
+                            </button>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 flex items-center justify-center">
+                            <button class="w-full h-full min-h-[40px] border border-dashed border-danger/30 rounded bg-white hover:bg-danger/5 transition-colors text-danger text-xs font-medium flex flex-col items-center justify-center">
+                                <span>+ Add</span>
+                                <span class="text-[10px] text-gray-500 mt-0.5">1 needed</span>
+                            </button>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-blue/5"></div>
+                        <div class="p-2 border-r border-gray-100"></div>
+                        <div class="p-2 border-r border-gray-100"></div>
+                        <div class="p-2 border-r border-gray-100"></div>
+                        <div class="p-2 border-r border-gray-100 bg-gray-50"></div>
+                    </div>
+
+                    <!-- Department Row: FLT Driver -->
+                    <div class="bg-gray-800 text-white p-2 px-4 text-sm font-semibold tracking-wide border-b border-gray-200 mt-4 flex justify-between items-center">
+                        <span>FLT Drivers (Days)</span>
+                        <span class="text-xs font-normal text-gray-300">Target Headcount: 2</span>
+                    </div>
+
+                    <!-- Worker Row 3 -->
+                    <div class="schedule-grid border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <div class="p-3 border-r border-gray-100 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-xs shrink-0">DP</div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-navy truncate">David Patel</p>
+                                <div class="flex items-center gap-1 mt-0.5">
+                                    <i class="fa-solid fa-shield-check text-[10px] text-success"></i>
+                                    <p class="text-[10px] text-gray-500 truncate">Apex Staffing</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-blue/10 border border-blue/20 rounded p-1.5 h-full cursor-pointer hover:bg-blue/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">06:00 - 14:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £19.00/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-blue/10 border border-blue/20 rounded p-1.5 h-full cursor-pointer hover:bg-blue/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">06:00 - 14:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £19.00/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-blue/5">
+                            <div class="bg-blue/10 border border-blue/20 rounded p-1.5 h-full cursor-pointer hover:bg-blue/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">06:00 - 14:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £19.00/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-blue/10 border border-blue/20 rounded p-1.5 h-full cursor-pointer hover:bg-blue/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">06:00 - 14:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £19.00/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-white">
+                            <div class="bg-blue/10 border border-blue/20 rounded p-1.5 h-full cursor-pointer hover:bg-blue/20 transition-colors">
+                                <div class="text-xs font-semibold text-navy">06:00 - 14:00</div>
+                                <div class="text-[10px] text-gray-600 mt-0.5">8h • £19.00/h</div>
+                            </div>
+                        </div>
+                        <div class="p-2 border-r border-gray-100 bg-gray-50 flex items-center justify-center">
+                            <span class="text-xs text-gray-400 font-medium">Off</span>
+                        </div>
+                        <div class="p-2 bg-gray-50 flex items-center justify-center">
+                            <span class="text-xs text-gray-400 font-medium">Off</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

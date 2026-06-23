@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#F3F4F6]">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Abstractvms Client Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sora: ['Sora', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#172554',
+                        blue: '#1D4ED8',
+                        purple: '#5B2E91',
+                        lightgrey: '#F3F4F6',
+                        success: '#16A34A',
+                        warning: '#F59E0B',
+                        danger: '#DC2626',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-full m-0 p-0 overflow-hidden antialiased text-gray-800 flex bg-[#F3F4F6]">
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="w-64 bg-navy h-screen flex-shrink-0 flex flex-col border-r border-navy/20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-white/10 shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-blue flex items-center justify-center text-white font-sora font-bold text-xl">A</div>
+                <span class="text-xl font-sora font-bold text-white tracking-tight">Abstract<span class="text-blue-300">vms</span></span>
+            </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex-1 overflow-y-auto py-6 px-3">
+            <nav class="space-y-1">
+                <a href="1-Abstractvms - Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-chart-pie w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Dashboard</span>
+                </a>
+                <a href="2-Abstractvms - Business Units.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-building w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Business Units</span>
+                </a>
+                <a href="3-Abstractvms - Users & Permissi.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-users-gear w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Users & Permissions</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Recruitment</p>
+                </div>
+                <a href="4-Abstractvms - Vacancies.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-briefcase w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Vacancies</span>
+                </a>
+                <a href="6-Abstractvms - Bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clipboard-list w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Bookings</span>
+                </a>
+                <a href="7-Abstractvms - Timesheets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clock w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Timesheets</span>
+                </a>
+                <a href="8-Abstractvms - Invoices.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Invoices</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="9-Abstractvms - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-blue text-white group transition-colors duration-200 border-l-4 border-white">
+                    <i class="fa-solid fa-chart-line w-5 text-center text-white"></i>
+                    <span class="text-sm font-medium">Reports</span>
+                </a>
+                <a href="10-Abstractvms - Candidate Direct.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-address-card w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Candidate Directory</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- User Profile -->
+        <div class="border-t border-white/10 p-4 shrink-0">
+            <div class="flex items-center gap-3 w-full">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User Avatar" class="h-9 w-9 rounded-full object-cover border border-gray-600">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate font-sora">Sarah Jenkins</p>
+                    <p class="text-xs text-gray-400 truncate">Client Admin</p>
+                </div>
+                <a href="11-Abstractvms - Sign In.html" class="text-gray-400 hover:text-white transition-colors" title="Sign Out">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Header -->
+        <header id="header" class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0 shadow-sm z-10">
+            <div class="flex items-center gap-4">
+                <h1 class="text-xl font-sora font-semibold text-navy">Reports</h1>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <!-- Search -->
+                <div class="relative w-64 hidden md:block">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-blue focus:border-blue sm:text-sm transition-all" placeholder="Search reports...">
+                </div>
+
+                <!-- Notifications -->
+                <button class="relative text-gray-500 hover:text-navy transition-colors">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-white ring-2 ring-white">2</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main id="main-content" class="flex-1 overflow-y-auto p-6 bg-[#F3F4F6]">
+            <div class="max-w-[1600px] mx-auto space-y-6">
+
+                <!-- Header Actions & Filters -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <select class="appearance-none block w-48 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
+                                <option>Last 30 Days</option>
+                                <option>Last Quarter</option>
+                                <option>Year to Date</option>
+                                <option>Custom Range...</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                <i class="fa-solid fa-calendar text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <select class="appearance-none block w-56 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
+                                <option>All Business Units</option>
+                                <option>Midlands Dist.</option>
+                                <option>North Hub</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                <i class="fa-solid fa-building text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="px-4 py-2 bg-blue text-white rounded-md text-sm font-medium hover:bg-blue/90 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i> Export All
+                    </button>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Left Column: Report Categories -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                            <h2 class="text-lg font-sora font-semibold text-navy mb-4 border-b border-gray-100 pb-3">Available Reports</h2>
+                            
+                            <div class="space-y-1">
+                                <button class="w-full text-left px-3 py-2.5 rounded-md bg-blue/5 text-blue font-medium text-sm flex items-center justify-between border-l-2 border-blue transition-colors">
+                                    <span>Business Unit Performance</span>
+                                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                                </button>
+                                <button class="w-full text-left px-3 py-2.5 rounded-md text-gray-700 hover:bg-gray-50 font-medium text-sm flex items-center justify-between border-l-2 border-transparent transition-colors">
+                                    <span>Vacancy Fill Rates</span>
+                                    <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100"></i>
+                                </button>
+                                <button class="w-full text-left px-3 py-2.5 rounded-md text-gray-700 hover:bg-gray-50 font-medium text-sm flex items-center justify-between border-l-2 border-transparent transition-colors">
+                                    <span>Booking Trends</span>
+                                    <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100"></i>
+                                </button>
+                                <button class="w-full text-left px-3 py-2.5 rounded-md text-gray-700 hover:bg-gray-50 font-medium text-sm flex items-center justify-between border-l-2 border-transparent transition-colors">
+                                    <span>Timesheet Approvals</span>
+                                    <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100"></i>
+                                </button>
+                                <button class="w-full text-left px-3 py-2.5 rounded-md text-gray-700 hover:bg-gray-50 font-medium text-sm flex items-center justify-between border-l-2 border-transparent transition-colors">
+                                    <span>Invoice Summaries</span>
+                                    <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Info Card -->
+                        <div class="bg-blue/5 rounded-xl border border-blue/20 p-4">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-info text-blue mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-navy">Rate Visibility Restricted</h4>
+                                    <p class="text-xs text-gray-600 mt-1 leading-relaxed">All financial reports are strictly limited to display <strong>Charge Rates</strong> only. Margins and pay rates are not accessible from this portal.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Active Report View -->
+                    <div class="lg:col-span-2 space-y-6">
+                        
+                        <!-- KPIs -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Charge Spend</p>
+                                <h3 class="text-2xl font-bold text-navy font-sora">£142,500</h3>
+                                <div class="mt-2 text-xs text-success flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                    <span class="font-medium">12% vs last month</span>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Hours Billed</p>
+                                <h3 class="text-2xl font-bold text-navy font-sora">8,450 hrs</h3>
+                                <div class="mt-2 text-xs text-danger flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                    <span class="font-medium">3% vs last month</span>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Active Headcount</p>
+                                <h3 class="text-2xl font-bold text-navy font-sora">124</h3>
+                                <div class="mt-2 text-xs text-gray-500">
+                                    <span>Across 4 Units</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chart Section -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                            <div class="flex justify-between items-center mb-6">
+                                <div>
+                                    <h3 class="text-lg font-sora font-semibold text-navy">Spend by Business Unit</h3>
+                                    <p class="text-sm text-gray-500">Charge rates aggregated over selected period</p>
+                                </div>
+                                <button class="text-sm text-blue hover:text-navy font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-expand"></i> View Full
+                                </button>
+                            </div>
+                            <div id="spendChart" class="h-[300px] w-full"></div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                            <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                                <h3 class="text-sm font-semibold text-navy">Business Unit Breakdown</h3>
+                                <button class="px-3 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-md text-xs font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
+                                    <i class="fa-solid fa-file-csv"></i> CSV
+                                </button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Business Unit</th>
+                                            <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Total Hours</th>
+                                            <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Avg Charge Rate</th>
+                                            <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Total Spend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-navy">Midlands Dist. (All)</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right">3,200</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right font-mono">£16.50</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-navy text-right font-mono">£52,800.00</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-navy">North Hub</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right">2,850</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right font-mono">£17.00</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-navy text-right font-mono">£48,450.00</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-navy">South East Ops</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right">1,900</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right font-mono">£18.20</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-navy text-right font-mono">£34,580.00</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-navy">London City</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right">500</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 text-right font-mono">£13.34</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-navy text-right font-mono">£6,670.00</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot class="bg-gray-50 border-t border-gray-200">
+                                        <tr>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-bold text-navy">Totals</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-bold text-navy text-right">8,450</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-bold text-navy text-right font-mono">-</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-bold text-navy text-right font-mono">£142,500.00</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            try {
+                var data = [{
+                    type: 'bar',
+                    x: ['Midlands Dist.', 'North Hub', 'South East Ops', 'London City'],
+                    y: [52800, 48450, 34580, 6670],
+                    marker: {
+                        color: ['#1D4ED8', '#1D4ED8', '#1D4ED8', '#1D4ED8'],
+                        corner_radius: 4
+                    }
+                }];
+                
+                var layout = {
+                    margin: { t: 20, r: 20, b: 40, l: 60 },
+                    plot_bgcolor: 'transparent',
+                    paper_bgcolor: 'transparent',
+                    xaxis: { 
+                        tickfont: { color: '#6B7280' },
+                        gridcolor: '#F3F4F6'
+                    },
+                    yaxis: { 
+                        tickprefix: '£',
+                        tickfont: { color: '#6B7280' },
+                        gridcolor: '#F3F4F6'
+                    },
+                    showlegend: false
+                };
+                
+                var config = {responsive: true, displayModeBar: false};
+                Plotly.newPlot('spendChart', data, layout, config);
+            } catch(e) {
+                console.error('Error loading chart:', e);
+            }
+        });
+    </script>
+</body>
+</html>

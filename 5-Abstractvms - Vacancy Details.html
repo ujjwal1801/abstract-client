@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#F3F4F6]">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancy Details - Abstractvms Client Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sora: ['Sora', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#172554',
+                        blue: '#1D4ED8',
+                        purple: '#5B2E91',
+                        lightgrey: '#F3F4F6',
+                        success: '#16A34A',
+                        warning: '#F59E0B',
+                        danger: '#DC2626',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-full m-0 p-0 overflow-hidden antialiased text-gray-800 flex bg-[#F3F4F6]">
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="w-64 bg-navy h-screen flex-shrink-0 flex flex-col border-r border-navy/20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-white/10 shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-blue flex items-center justify-center text-white font-sora font-bold text-xl">A</div>
+                <span class="text-xl font-sora font-bold text-white tracking-tight">Abstract<span class="text-blue-300">vms</span></span>
+            </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex-1 overflow-y-auto py-6 px-3">
+            <nav class="space-y-1">
+                <a href="1-Abstractvms - Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-chart-pie w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Dashboard</span>
+                </a>
+                <a href="2-Abstractvms - Business Units.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-building w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Business Units</span>
+                </a>
+                <a href="3-Abstractvms - Users & Permissi.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-users-gear w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Users & Permissions</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Recruitment</p>
+                </div>
+                <a href="4-Abstractvms - Vacancies.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-blue text-white group transition-colors duration-200 border-l-4 border-white">
+                    <i class="fa-solid fa-briefcase w-5 text-center text-white"></i>
+                    <span class="text-sm font-medium">Vacancies</span>
+                </a>
+                <a href="6-Abstractvms - Bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clipboard-list w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Bookings</span>
+                </a>
+                <a href="10-Abstractvms - Candidate Direct.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-address-card w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Candidate Directory</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Finance</p>
+                </div>
+                <a href="7-Abstractvms - Timesheets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clock w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Timesheets</span>
+                </a>
+                <a href="8-Abstractvms - Invoices.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Invoices</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="9-Abstractvms - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-chart-line w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Reports</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- User Profile -->
+        <div class="border-t border-white/10 p-4 shrink-0">
+            <div class="flex items-center gap-3 w-full">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User Avatar" class="h-9 w-9 rounded-full object-cover border border-gray-600">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate font-sora">Sarah Jenkins</p>
+                    <p class="text-xs text-gray-400 truncate">Client Admin</p>
+                </div>
+                <a href="11-Abstractvms - Sign In.html" class="text-gray-400 hover:text-white transition-colors" title="Sign Out">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Header -->
+        <header id="header" class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0 shadow-sm z-10">
+            <div class="flex items-center gap-4">
+                <h1 class="text-xl font-sora font-semibold text-navy">Vacancy Details</h1>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <!-- Search -->
+                <div class="relative w-64 hidden md:block">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-blue focus:border-blue sm:text-sm transition-all" placeholder="Search vacancies...">
+                </div>
+
+                <!-- Notifications -->
+                <button class="relative text-gray-500 hover:text-navy transition-colors">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-white ring-2 ring-white">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main id="main-content" class="flex-1 overflow-y-auto p-8 bg-[#F3F4F6]">
+            <div class="max-w-7xl mx-auto space-y-6">
+
+                <!-- Page Breadcrumbs & Actions -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <nav class="flex text-sm text-gray-500 mb-2">
+                            <a href="4-Abstractvms - Vacancies.html" class="hover:text-blue transition-colors">Vacancies</a>
+                            <span class="mx-2">/</span>
+                            <span class="text-gray-900 font-medium font-mono">VAC-2024-0891</span>
+                        </nav>
+                        <div class="flex items-center gap-3">
+                            <h2 class="text-2xl font-bold text-navy font-sora">Warehouse Operative</h2>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                                Open
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors">
+                            Edit Details
+                        </button>
+                        <button class="px-4 py-2 border border-danger text-danger bg-white rounded-md text-sm font-medium hover:bg-danger/10 transition-colors">
+                            Close Vacancy
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-6">
+                    
+                    <!-- Left Column: Details & Proposals -->
+                    <div class="w-full lg:w-2/3 space-y-6">
+                        
+                        <!-- Role Details Card -->
+                        <div id="role-details" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                            <h3 class="text-lg font-sora font-semibold text-navy mb-4 border-b border-gray-100 pb-3">Role Overview</h3>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900 mb-2">Job Description</h4>
+                                    <p class="text-sm text-gray-600 leading-relaxed">
+                                        We are seeking reliable and diligent Warehouse Operatives to join our fast-paced distribution centre. The role involves picking and packing orders, loading and unloading delivery vehicles, and maintaining a safe and tidy work environment. You will be required to use handheld RF scanners and operate pallet trucks. Physical fitness is essential as manual handling of goods up to 25kg is required.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900 mb-3">Key Requirements & Compliance</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                                            <i class="fa-solid fa-hard-hat text-gray-500"></i> Safety Boots Required
+                                        </span>
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                                            <i class="fa-solid fa-vest text-gray-500"></i> Hi-Vis Required
+                                        </span>
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                                            <i class="fa-solid fa-file-contract text-gray-500"></i> Site Induction Needed
+                                        </span>
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700 border border-gray-200">
+                                            <i class="fa-solid fa-box text-gray-500"></i> Manual Handling
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proposals Section (Client Facing) -->
+                        <div id="proposals-section">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-sora font-semibold text-navy">Candidate Proposals</h3>
+                                <span class="bg-blue/10 text-blue px-2.5 py-1 rounded-full text-xs font-bold">4 Pending</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- Proposal Card 1 -->
+                                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:border-blue/30 hover:shadow-md">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue/10 flex items-center justify-center text-blue font-bold font-sora shrink-0">
+                                            MJ
+                                        </div>
+                                        <div>
+                                            <h4 class="font-sora font-semibold text-navy text-lg">Marcus Johnson</h4>
+                                            <p class="text-sm text-gray-500 mb-2">Proposed by <span class="font-medium text-gray-700">Apex Staffing</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
+                                                    <i class="fa-solid fa-shield-check"></i> Compliant
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col sm:items-end gap-3 border-t sm:border-t-0 border-gray-100 pt-3 sm:pt-0">
+                                        <div class="text-right">
+                                            <p class="text-xs text-gray-500 mb-0.5">Charge Rate</p>
+                                            <p class="font-mono font-semibold text-navy text-lg">£16.50 <span class="text-sm text-gray-500 font-normal">/ hr</span></p>
+                                        </div>
+                                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                                            <button class="flex-1 sm:flex-none px-4 py-2 border border-danger text-danger bg-white hover:bg-danger/10 rounded-md text-sm font-medium transition-colors">
+                                                Reject
+                                            </button>
+                                            <button class="flex-1 sm:flex-none px-4 py-2 bg-blue text-white rounded-md text-sm font-medium hover:bg-navy transition-colors">
+                                                Accept
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Proposal Card 2 -->
+                                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:border-blue/30 hover:shadow-md">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-purple/10 flex items-center justify-center text-purple font-bold font-sora shrink-0">
+                                            SW
+                                        </div>
+                                        <div>
+                                            <h4 class="font-sora font-semibold text-navy text-lg">Sarah Williams</h4>
+                                            <p class="text-sm text-gray-500 mb-2">Proposed by <span class="font-medium text-gray-700">Rapid Recruit Ltd</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20">
+                                                    <i class="fa-solid fa-triangle-exclamation"></i> Induction Pending
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col sm:items-end gap-3 border-t sm:border-t-0 border-gray-100 pt-3 sm:pt-0">
+                                        <div class="text-right">
+                                            <p class="text-xs text-gray-500 mb-0.5">Charge Rate</p>
+                                            <p class="font-mono font-semibold text-navy text-lg">£16.50 <span class="text-sm text-gray-500 font-normal">/ hr</span></p>
+                                        </div>
+                                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                                            <button class="flex-1 sm:flex-none px-4 py-2 border border-danger text-danger bg-white hover:bg-danger/10 rounded-md text-sm font-medium transition-colors">
+                                                Reject
+                                            </button>
+                                            <button class="flex-1 sm:flex-none px-4 py-2 bg-blue text-white rounded-md text-sm font-medium hover:bg-navy transition-colors">
+                                                Accept
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Proposal Card 3 -->
+                                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:border-blue/30 hover:shadow-md">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold font-sora shrink-0">
+                                            DP
+                                        </div>
+                                        <div>
+                                            <h4 class="font-sora font-semibold text-navy text-lg">David Patel</h4>
+                                            <p class="text-sm text-gray-500 mb-2">Proposed by <span class="font-medium text-gray-700">Apex Staffing</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
+                                                    <i class="fa-solid fa-shield-check"></i> Compliant
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col sm:items-end gap-3 border-t sm:border-t-0 border-gray-100 pt-3 sm:pt-0">
+                                        <div class="text-right">
+                                            <p class="text-xs text-gray-500 mb-0.5">Charge Rate</p>
+                                            <p class="font-mono font-semibold text-navy text-lg">£16.50 <span class="text-sm text-gray-500 font-normal">/ hr</span></p>
+                                        </div>
+                                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                                            <button class="flex-1 sm:flex-none px-4 py-2 border border-danger text-danger bg-white hover:bg-danger/10 rounded-md text-sm font-medium transition-colors">
+                                                Reject
+                                            </button>
+                                            <button class="flex-1 sm:flex-none px-4 py-2 bg-blue text-white rounded-md text-sm font-medium hover:bg-navy transition-colors">
+                                                Accept
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Summary Card -->
+                    <div class="w-full lg:w-1/3 space-y-6">
+                        <div id="vacancy-summary" class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                            <div class="p-5 border-b border-gray-100 bg-gray-50/50">
+                                <h3 class="text-sm font-sora font-semibold text-navy uppercase tracking-wider">Vacancy Details</h3>
+                            </div>
+                            <div class="p-5 space-y-4">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                                    <span class="text-sm text-gray-500">Business Unit</span>
+                                    <span class="text-sm font-medium text-gray-900">Midlands Dist.</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                                    <span class="text-sm text-gray-500">Shift Pattern</span>
+                                    <span class="text-sm font-medium text-gray-900">Nights (22:00 - 06:00)</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                                    <span class="text-sm text-gray-500">Required Headcount</span>
+                                    <span class="text-sm font-medium text-gray-900">12</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                                    <span class="text-sm text-gray-500">Filled Positions</span>
+                                    <span class="text-sm font-medium text-gray-900">0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-50">
+                                    <span class="text-sm text-gray-500">Start Date</span>
+                                    <span class="text-sm font-medium text-gray-900">24 Oct 2024</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 bg-blue/5 rounded-lg px-3 mt-2">
+                                    <span class="text-sm font-semibold text-navy">Target Charge Rate</span>
+                                    <span class="text-sm font-bold text-navy font-mono">£16.50 / hr</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hiring Manager Info -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                            <h3 class="text-sm font-sora font-semibold text-navy mb-4">Hiring Manager</h3>
+                            <div class="flex items-center gap-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Manager Avatar" class="h-10 w-10 rounded-full object-cover border border-gray-200">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900 font-sora">Rebecca Smith</p>
+                                    <p class="text-xs text-gray-500">Operations Manager</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#F3F4F6]">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Abstractvms Client Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sora: ['Sora', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#172554',
+                        blue: '#1D4ED8',
+                        purple: '#5B2E91',
+                        lightgrey: '#F3F4F6',
+                        success: '#16A34A',
+                        warning: '#F59E0B',
+                        danger: '#DC2626',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="h-full m-0 p-0 overflow-hidden antialiased text-gray-800 flex bg-[#F3F4F6]">
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="w-64 bg-navy h-screen flex-shrink-0 flex flex-col border-r border-navy/20">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-white/10 shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-blue flex items-center justify-center text-white font-sora font-bold text-xl">A</div>
+                <span class="text-xl font-sora font-bold text-white tracking-tight">Abstract<span class="text-blue-300">vms</span></span>
+            </div>
+        </div>
+
+        <!-- Nav Links -->
+        <div class="flex-1 overflow-y-auto py-6 px-3">
+            <nav class="space-y-1">
+                <a href="1-Abstractvms - Dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-blue text-white group transition-colors duration-200 border-l-4 border-white">
+                    <i class="fa-solid fa-chart-pie w-5 text-center text-white"></i>
+                    <span class="text-sm font-medium">Dashboard</span>
+                </a>
+                <a href="2-Abstractvms - Business Units.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-building w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Business Units</span>
+                </a>
+                <a href="3-Abstractvms - Users & Permissi.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-users-gear w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Users & Permissions</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Recruitment</p>
+                </div>
+                <a href="4-Abstractvms - Vacancies.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-briefcase w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Vacancies</span>
+                </a>
+                <a href="6-Abstractvms - Bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clipboard-list w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Bookings</span>
+                </a>
+                <a href="10-Abstractvms - Candidate Direct.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-address-card w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Candidate Directory</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Finance</p>
+                </div>
+                <a href="7-Abstractvms - Timesheets.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-clock w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Timesheets</span>
+                </a>
+                <a href="8-Abstractvms - Invoices.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Invoices</span>
+                </a>
+                <div class="pt-4 pb-1">
+                    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Analytics</p>
+                </div>
+                <a href="9-Abstractvms - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 hover:bg-white/5 hover:text-white group transition-colors duration-200 border-l-4 border-transparent">
+                    <i class="fa-solid fa-chart-line w-5 text-center text-gray-400 group-hover:text-white"></i>
+                    <span class="text-sm font-medium">Reports</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- User Profile -->
+        <div class="border-t border-white/10 p-4 shrink-0">
+            <div class="flex items-center gap-3 w-full">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User Avatar" class="h-9 w-9 rounded-full object-cover border border-gray-600">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate font-sora">Sarah Jenkins</p>
+                    <p class="text-xs text-gray-400 truncate">Client Admin</p>
+                </div>
+                <a href="11-Abstractvms - Sign In.html" class="text-gray-400 hover:text-white transition-colors" title="Sign Out">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-screen overflow-hidden">
+        
+        <!-- Header -->
+        <header id="header" class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0 shadow-sm z-10">
+            <div class="flex items-center gap-4">
+                <h1 class="text-xl font-sora font-semibold text-navy">Dashboard Overview</h1>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <!-- Search -->
+                <div class="relative w-64 hidden md:block">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:bg-white focus:ring-1 focus:ring-blue focus:border-blue sm:text-sm transition-all" placeholder="Search vacancies, candidates...">
+                </div>
+
+                <!-- Notifications -->
+                <button class="relative text-gray-500 hover:text-navy transition-colors">
+                    <i class="fa-regular fa-bell text-lg"></i>
+                    <span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-danger text-[10px] font-bold text-white ring-2 ring-white">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main id="main-content" class="flex-1 overflow-y-auto p-8 bg-[#F3F4F6]">
+            <div class="max-w-7xl mx-auto space-y-8">
+
+                <!-- Welcome Section -->
+                <div>
+                    <h2 class="text-3xl font-sora font-bold text-navy mb-2">Good morning, Sarah</h2>
+                    <p class="text-gray-600 font-manrope">Here's a summary of your operations across all business units today.</p>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Vacancies Card -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="h-10 w-10 rounded-lg bg-blue/10 flex items-center justify-center text-blue">
+                                <i class="fa-solid fa-briefcase text-lg"></i>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-md bg-success/10 text-success text-xs font-medium">
+                                <i class="fa-solid fa-arrow-up mr-1 text-[10px]"></i> 12%
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium text-gray-500 font-manrope mb-1">Open Vacancies</h3>
+                            <p class="text-3xl font-sora font-bold text-navy">42</p>
+                        </div>
+                    </div>
+
+                    <!-- Bookings Card -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="h-10 w-10 rounded-lg bg-purple/10 flex items-center justify-center text-purple">
+                                <i class="fa-solid fa-users text-lg"></i>
+                            </div>
+                            <span class="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 text-gray-600 text-xs font-medium">
+                                Active Now
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium text-gray-500 font-manrope mb-1">Active Bookings</h3>
+                            <p class="text-3xl font-sora font-bold text-navy">156</p>
+                        </div>
+                    </div>
+
+                    <!-- Timesheets Card -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1 h-full bg-warning"></div>
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="h-10 w-10 rounded-lg bg-warning/10 flex items-center justify-center text-warning">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium text-gray-500 font-manrope mb-1">Pending Timesheets</h3>
+                            <p class="text-3xl font-sora font-bold text-navy">24</p>
+                            <p class="text-xs text-gray-500 mt-2">Requires approval this week</p>
+                        </div>
+                    </div>
+
+                    <!-- Invoices Card -->
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="h-10 w-10 rounded-lg bg-navy/10 flex items-center justify-center text-navy">
+                                <i class="fa-solid fa-file-invoice-dollar text-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium text-gray-500 font-manrope mb-1">Current Spend (MTD)</h3>
+                            <p class="text-3xl font-sora font-bold text-navy">£45,200</p>
+                            <p class="text-xs text-gray-500 mt-2">Based on approved timesheets</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Left Column: Business Units & Recent Action -->
+                    <div class="lg:col-span-2 space-y-8">
+                        
+                        <!-- Business Units Summary List -->
+                        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                                <h3 class="text-lg font-sora font-semibold text-navy">Business Units Summary</h3>
+                                <a href="2-Abstractvms - Business Units.html" class="text-sm font-medium text-blue hover:text-navy">View All <i class="fa-solid fa-chevron-right ml-1 text-xs"></i></a>
+                            </div>
+                            <div class="divide-y divide-gray-100">
+                                <!-- Unit 1 -->
+                                <div class="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-10 w-10 rounded bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500">
+                                            <i class="fa-solid fa-warehouse"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-semibold text-navy font-sora">Midlands Distribution Centre</p>
+                                            <p class="text-xs text-gray-500">Birmingham • 85 Active Workers</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 text-right">
+                                        <div>
+                                            <p class="text-xs text-gray-500 mb-1">Open Roles</p>
+                                            <p class="text-sm font-medium text-navy">12</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500 mb-1">Est. Spend</p>
+                                            <p class="text-sm font-medium text-navy font-mono">£18k</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Unit 2 -->
+                                <div class="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-10 w-10 rounded bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500">
+                                            <i class="fa-solid fa-warehouse"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-semibold text-navy font-sora">Northern Hub</p>
+                                            <p class="text-xs text-gray-500">Manchester • 42 Active Workers</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 text-right">
+                                        <div>
+                                            <p class="text-xs text-gray-500 mb-1">Open Roles</p>
+                                            <p class="text-sm font-medium text-navy">8</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500 mb-1">Est. Spend</p>
+                                            <p class="text-sm font-medium text-navy font-mono">£12k</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Unit 3 -->
+                                <div class="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-10 w-10 rounded bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500">
+                                            <i class="fa-solid fa-warehouse"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-semibold text-navy font-sora">London Gateway</p>
+                                            <p class="text-xs text-gray-500">Essex • 29 Active Workers</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4 text-right">
+                                        <div>
+                                            <p class="text-xs text-gray-500 mb-1">Open Roles</p>
+                                            <p class="text-sm font-medium text-navy">22</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500 mb-1">Est. Spend</p>
+                                            <p class="text-sm font-medium text-navy font-mono">£15k</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Actionable Items -->
+                    <div class="space-y-8">
+                        
+                        <!-- Recent Proposals Action Box -->
+                        <div class="bg-white border border-gray-200 rounded-xl shadow-sm">
+                            <div class="px-6 py-4 border-b border-gray-200">
+                                <h3 class="text-lg font-sora font-semibold text-navy">Pending Proposals</h3>
+                                <p class="text-xs text-gray-500 mt-1">Candidates waiting for your review</p>
+                            </div>
+                            <div class="p-6 space-y-4">
+                                <!-- Proposal 1 -->
+                                <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <p class="text-sm font-semibold text-navy">David Smith</p>
+                                            <p class="text-xs text-gray-500">FLT Driver (Reach) • Midlands</p>
+                                        </div>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-success/10 text-success border border-success/20">
+                                            <i class="fa-solid fa-shield-check mr-1"></i> Compliant
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-4">
+                                        <button class="flex-1 bg-blue text-white text-xs font-medium py-2 rounded hover:bg-navy transition-colors">Accept</button>
+                                        <button class="flex-1 bg-white text-gray-700 border border-gray-300 text-xs font-medium py-2 rounded hover:bg-gray-50 transition-colors">Reject</button>
+                                    </div>
+                                </div>
+                                <!-- Proposal 2 -->
+                                <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <p class="text-sm font-semibold text-navy">Emma Johnson</p>
+                                            <p class="text-xs text-gray-500">Warehouse Operative • Northern</p>
+                                        </div>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-warning/10 text-warning border border-warning/20">
+                                            <i class="fa-solid fa-triangle-exclamation mr-1"></i> Action Req
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-4">
+                                        <button class="flex-1 bg-blue text-white text-xs font-medium py-2 rounded hover:bg-navy transition-colors">Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
