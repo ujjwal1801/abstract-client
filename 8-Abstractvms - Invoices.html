@@ -216,9 +216,11 @@
                             <div class="relative">
                                 <select class="appearance-none block w-40 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
                                     <option>All Statuses</option>
-                                    <option>Unpaid</option>
-                                    <option>Overdue</option>
+                                    <option>Generated</option>
+                                    <option>Sent</option>
                                     <option>Paid</option>
+                                    <option>Disputed</option>
+                                    <option>Credited</option>
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                                     <i class="fa-solid fa-chevron-down text-xs"></i>
@@ -269,10 +271,11 @@
                                 <tr>
                                     <th scope="col" class="w-12 px-4 py-3"></th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice No.</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">PO Reference</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Business Unit</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Issued Date</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Due Date</th>
-                                    <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount</th>
+                                    <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount (incl. VAT)</th>
                                     <th scope="col" class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
                                     <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
                                 </tr>
@@ -288,6 +291,9 @@
                                         <p class="text-sm font-semibold text-navy font-mono">INV-2024-089</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
+                                        <p class="text-sm text-gray-700 font-mono">PO-44120</p>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
                                         <p class="text-sm font-medium text-gray-900">Midlands Dist. (All)</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
@@ -298,15 +304,21 @@
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-right">
                                         <p class="text-sm font-bold text-navy font-sora">£2,100.00</p>
-                                        <p class="text-[10px] text-gray-500 uppercase">Charge Rate Only</p>
+                                        <p class="text-[10px] text-gray-500">incl. £350.00 VAT · Charge Rate</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-center">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-danger/10 text-danger border border-danger/20">
-                                            Overdue
-                                        </span>
+                                        <div class="flex items-center justify-center gap-1.5">
+                                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                                                Sent
+                                            </span>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">
+                                                Overdue
+                                            </span>
+                                        </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <div class="flex items-center justify-end gap-2">
+                                            <button class="px-2.5 py-1 text-xs font-medium text-danger border border-danger/30 rounded hover:bg-danger/10 transition-colors" title="Dispute invoice">Dispute</button>
                                             <button class="p-1.5 text-gray-500 hover:text-blue hover:bg-blue/10 rounded transition-colors" title="Download PDF">
                                                 <i class="fa-solid fa-file-pdf"></i>
                                             </button>
@@ -317,13 +329,16 @@
                                     </td>
                                 </tr>
 
-                                <!-- Row 2: Unpaid -->
+                                <!-- Row 2: Sent -->
                                 <tr class="hover:bg-blue/5 transition-colors group">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <input type="checkbox" class="custom-checkbox w-4 h-4 rounded border-gray-300 text-blue focus:ring-blue cursor-pointer appearance-none border bg-white">
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <p class="text-sm font-semibold text-navy font-mono">INV-2024-092</p>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <p class="text-sm text-gray-700 font-mono">PO-44155</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <p class="text-sm font-medium text-gray-900">North Hub</p>
@@ -336,15 +351,16 @@
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-right">
                                         <p class="text-sm font-bold text-navy font-sora">£4,800.00</p>
-                                        <p class="text-[10px] text-gray-500 uppercase">Charge Rate Only</p>
+                                        <p class="text-[10px] text-gray-500">incl. £800.00 VAT · Charge Rate</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-center">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200">
-                                            Unpaid
+                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                                            Sent
                                         </span>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button class="px-2.5 py-1 text-xs font-medium text-danger border border-danger/30 rounded hover:bg-danger/10 transition-colors" title="Dispute invoice">Dispute</button>
                                             <button class="p-1.5 text-gray-500 hover:text-blue hover:bg-blue/10 rounded transition-colors" title="Download PDF">
                                                 <i class="fa-solid fa-file-pdf"></i>
                                             </button>
@@ -364,6 +380,9 @@
                                         <p class="text-sm font-semibold text-gray-700 font-mono">INV-2024-075</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap opacity-75">
+                                        <p class="text-sm text-gray-600 font-mono">PO-43980</p>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap opacity-75">
                                         <p class="text-sm font-medium text-gray-700">Midlands Dist. (All)</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap opacity-75">
@@ -374,7 +393,7 @@
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-right opacity-75">
                                         <p class="text-sm font-bold text-gray-700 font-sora">£5,250.00</p>
-                                        <p class="text-[10px] text-gray-500 uppercase">Charge Rate Only</p>
+                                        <p class="text-[10px] text-gray-500">incl. £875.00 VAT · Charge Rate</p>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-center">
                                         <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">

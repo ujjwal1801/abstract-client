@@ -157,6 +157,144 @@
         <main id="main-content" class="flex-1 overflow-y-auto p-6 bg-[#F3F4F6]">
             <div class="max-w-[1600px] mx-auto space-y-6">
 
+                <!-- View Tabs -->
+                <div class="flex items-center gap-1 bg-white p-1 rounded-xl border border-gray-200 shadow-sm w-fit">
+                    <button id="tab-list" onclick="switchBookingView('list')" class="px-4 py-2 rounded-lg text-sm font-medium bg-blue text-white transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-list"></i> List View
+                    </button>
+                    <button id="tab-calendar" onclick="switchBookingView('calendar')" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-week"></i> Calendar View
+                    </button>
+                </div>
+
+                <!-- LIST VIEW (primary) -->
+                <div id="list-view" class="space-y-6">
+
+                    <!-- Filter Bar -->
+                    <div class="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="relative w-64">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                            </div>
+                            <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-blue focus:border-blue" placeholder="Search ref or candidate...">
+                        </div>
+                        <div class="relative">
+                            <select class="block pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue focus:border-blue appearance-none bg-gray-50">
+                                <option>All Business Units</option>
+                                <option>Midlands Distribution Centre</option>
+                                <option>Northern Hub</option>
+                                <option>London Gateway</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500"><i class="fa-solid fa-chevron-down text-xs"></i></div>
+                        </div>
+                        <div class="relative">
+                            <select class="block pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue focus:border-blue appearance-none bg-gray-50">
+                                <option>All Job Roles</option>
+                                <option>Warehouse Operative</option>
+                                <option>FLT Driver</option>
+                                <option>Picker/Packer</option>
+                                <option>Team Leader</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500"><i class="fa-solid fa-chevron-down text-xs"></i></div>
+                        </div>
+                        <div class="relative">
+                            <select class="block pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue focus:border-blue appearance-none bg-gray-50">
+                                <option>Status: All</option>
+                                <option>Pending Start</option>
+                                <option>Active</option>
+                                <option>Extended</option>
+                                <option>Completed</option>
+                                <option>Cancelled</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500"><i class="fa-solid fa-chevron-down text-xs"></i></div>
+                        </div>
+                        <div class="relative">
+                            <input type="text" onfocus="(this.type='date')" class="block pl-3 pr-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue focus:border-blue bg-gray-50" placeholder="Date range">
+                        </div>
+                    </div>
+
+                    <!-- Bookings List Table -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse whitespace-nowrap">
+                                <thead>
+                                    <tr class="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500">
+                                        <th class="p-4 font-semibold">Booking Ref</th>
+                                        <th class="p-4 font-semibold">Candidate</th>
+                                        <th class="p-4 font-semibold">Job Role</th>
+                                        <th class="p-4 font-semibold">Business Unit</th>
+                                        <th class="p-4 font-semibold">Start Date</th>
+                                        <th class="p-4 font-semibold">End Date</th>
+                                        <th class="p-4 font-semibold">Shift Pattern</th>
+                                        <th class="p-4 font-semibold">Charge Rate</th>
+                                        <th class="p-4 font-semibold">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 text-sm">
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="p-4 font-mono text-xs text-gray-600">BK-2024-0451</td>
+                                        <td class="p-4 font-medium text-navy">Marcus Johnson</td>
+                                        <td class="p-4 text-gray-700">Warehouse Operative</td>
+                                        <td class="p-4 text-gray-700">Midlands › Nights</td>
+                                        <td class="p-4 text-gray-700">24 Oct 2024</td>
+                                        <td class="p-4 text-gray-700">21 Nov 2024</td>
+                                        <td class="p-4 text-gray-700">Nights 22:00–06:00</td>
+                                        <td class="p-4 font-mono font-medium text-gray-900">£16.50 / hr</td>
+                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="p-4 font-mono text-xs text-gray-600">BK-2024-0452</td>
+                                        <td class="p-4 font-medium text-navy">Sarah Williams</td>
+                                        <td class="p-4 text-gray-700">Warehouse Operative</td>
+                                        <td class="p-4 text-gray-700">Midlands › Nights</td>
+                                        <td class="p-4 text-gray-700">28 Oct 2024</td>
+                                        <td class="p-4 text-gray-700">25 Nov 2024</td>
+                                        <td class="p-4 text-gray-700">Nights 22:00–06:00</td>
+                                        <td class="p-4 font-mono font-medium text-gray-900">£16.50 / hr</td>
+                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Pending Start</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="p-4 font-mono text-xs text-gray-600">BK-2024-0453</td>
+                                        <td class="p-4 font-medium text-navy">David Patel</td>
+                                        <td class="p-4 text-gray-700">FLT Driver</td>
+                                        <td class="p-4 text-gray-700">Northern Hub</td>
+                                        <td class="p-4 text-gray-700">14 Oct 2024</td>
+                                        <td class="p-4 text-gray-700">30 Nov 2024</td>
+                                        <td class="p-4 text-gray-700">Days 06:00–14:00</td>
+                                        <td class="p-4 font-mono font-medium text-gray-900">£19.00 / hr</td>
+                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">Extended</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="p-4 font-mono text-xs text-gray-600">BK-2024-0440</td>
+                                        <td class="p-4 font-medium text-navy">Emma Johnson</td>
+                                        <td class="p-4 text-gray-700">Picker/Packer</td>
+                                        <td class="p-4 text-gray-700">London Gateway</td>
+                                        <td class="p-4 text-gray-700">01 Sep 2024</td>
+                                        <td class="p-4 text-gray-700">18 Oct 2024</td>
+                                        <td class="p-4 text-gray-700">Lates 14:00–22:00</td>
+                                        <td class="p-4 font-mono font-medium text-gray-900">£15.00 / hr</td>
+                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Completed</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="p-4 font-mono text-xs text-gray-600">BK-2024-0432</td>
+                                        <td class="p-4 font-medium text-navy">James Carter</td>
+                                        <td class="p-4 text-gray-700">Team Leader</td>
+                                        <td class="p-4 text-gray-700">Midlands › Days</td>
+                                        <td class="p-4 text-gray-700">12 Aug 2024</td>
+                                        <td class="p-4 text-gray-700">05 Sep 2024</td>
+                                        <td class="p-4 text-gray-700">Days 06:00–14:00</td>
+                                        <td class="p-4 font-mono font-medium text-gray-900">£21.50 / hr</td>
+                                        <td class="p-4"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">Cancelled</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALENDAR VIEW (secondary) -->
+                <div id="calendar-view" class="hidden space-y-6">
+
                 <!-- Controls Bar -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
                     <div class="flex items-center gap-3">
@@ -260,7 +398,7 @@
                     <!-- Department Row: Warehouse Operative -->
                     <div class="bg-gray-800 text-white p-2 px-4 text-sm font-semibold tracking-wide border-b border-gray-200 flex justify-between items-center">
                         <span>Warehouse Operatives (Nights)</span>
-                        <span class="text-xs font-normal text-gray-300">Target Headcount: 4</span>
+                        <span class="text-xs font-normal text-gray-300">Positions: 4</span>
                     </div>
 
                     <!-- Worker Row 1 -->
@@ -390,7 +528,7 @@
                     <!-- Department Row: FLT Driver -->
                     <div class="bg-gray-800 text-white p-2 px-4 text-sm font-semibold tracking-wide border-b border-gray-200 mt-4 flex justify-between items-center">
                         <span>FLT Drivers (Days)</span>
-                        <span class="text-xs font-normal text-gray-300">Target Headcount: 2</span>
+                        <span class="text-xs font-normal text-gray-300">Positions: 2</span>
                     </div>
 
                     <!-- Worker Row 3 -->
@@ -444,10 +582,33 @@
                     </div>
 
                 </div>
+                </div><!-- /calendar-view -->
 
             </div>
         </main>
     </div>
+
+    <script>
+        function switchBookingView(view) {
+            var listView = document.getElementById('list-view');
+            var calView = document.getElementById('calendar-view');
+            var tabList = document.getElementById('tab-list');
+            var tabCal = document.getElementById('tab-calendar');
+            var active = 'px-4 py-2 rounded-lg text-sm font-medium bg-blue text-white transition-colors flex items-center gap-2';
+            var inactive = 'px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors flex items-center gap-2';
+            if (view === 'calendar') {
+                listView.classList.add('hidden');
+                calView.classList.remove('hidden');
+                tabCal.className = active;
+                tabList.className = inactive;
+            } else {
+                calView.classList.add('hidden');
+                listView.classList.remove('hidden');
+                tabList.className = active;
+                tabCal.className = inactive;
+            }
+        }
+    </script>
 
 </body>
 </html>

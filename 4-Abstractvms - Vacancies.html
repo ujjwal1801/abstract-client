@@ -221,9 +221,12 @@
                         <div class="relative">
                             <select class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue focus:border-blue appearance-none bg-gray-50">
                                 <option>Status: All</option>
-                                <option>Open</option>
                                 <option>Draft</option>
+                                <option>Open (Abstract Tier)</option>
+                                <option>Released to Agencies</option>
+                                <option>Partially Filled</option>
                                 <option>Filled</option>
+                                <option>Closed</option>
                                 <option>Cancelled</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
@@ -259,7 +262,7 @@
                                 <tr class="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500">
                                     <th class="p-4 font-semibold">Ref / Role</th>
                                     <th class="p-4 font-semibold">Business Unit</th>
-                                    <th class="p-4 font-semibold">Headcount</th>
+                                    <th class="p-4 font-semibold">Positions</th>
                                     <th class="p-4 font-semibold">Charge Rate</th>
                                     <th class="p-4 font-semibold">Proposals</th>
                                     <th class="p-4 font-semibold">Status / Priority</th>
@@ -280,8 +283,11 @@
                                         <div class="text-xs text-gray-500 mt-0.5">Shift: Nights (22:00 - 06:00)</div>
                                     </td>
                                     <td class="p-4">
-                                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                                            <span class="font-medium">12</span> required
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-slate-900">2 / 3</span>
+                                            <div class="w-16 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                                                <div class="h-full bg-emerald-500" style="width: 66%"></div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="p-4">
@@ -296,9 +302,8 @@
                                     </td>
                                     <td class="p-4">
                                         <div class="flex flex-col gap-1.5 items-start">
-                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
-                                                Open
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                                                Partially Filled
                                             </span>
                                             <span class="text-xs text-danger font-medium flex items-center gap-1">
                                                 <i class="fa-solid fa-arrow-up"></i> High Priority
@@ -326,8 +331,11 @@
                                         <div class="text-xs text-gray-500 mt-0.5">Shift: Days (06:00 - 14:00)</div>
                                     </td>
                                     <td class="p-4">
-                                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                                            <span class="font-medium">3</span> required
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-slate-900">0 / 3</span>
+                                            <div class="w-16 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                                                <div class="h-full bg-emerald-500" style="width: 0%"></div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="p-4">
@@ -339,9 +347,8 @@
                                     </td>
                                     <td class="p-4">
                                         <div class="flex flex-col gap-1.5 items-start">
-                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
-                                                Open
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                                                Open (Abstract Tier)
                                             </span>
                                             <span class="text-xs text-gray-500 font-medium">Medium Priority</span>
                                         </div>
@@ -367,8 +374,11 @@
                                         <div class="text-xs text-gray-500 mt-0.5">Shift: Lates (14:00 - 22:00)</div>
                                     </td>
                                     <td class="p-4">
-                                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                                            <span class="font-medium">20</span> required
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-slate-900">4 / 20</span>
+                                            <div class="w-16 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                                                <div class="h-full bg-emerald-500" style="width: 20%"></div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="p-4">
@@ -383,9 +393,8 @@
                                     </td>
                                     <td class="p-4">
                                         <div class="flex flex-col gap-1.5 items-start">
-                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-warning"></span>
-                                                Qualifying
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                                                Released to Agencies
                                             </span>
                                             <span class="text-xs text-danger font-medium flex items-center gap-1">
                                                 <i class="fa-solid fa-arrow-up"></i> High Priority
@@ -413,8 +422,11 @@
                                         <div class="text-xs text-gray-400 mt-0.5">Shift: Days (06:00 - 14:00)</div>
                                     </td>
                                     <td class="p-4">
-                                        <div class="flex items-center gap-2 text-sm text-gray-500">
-                                            <span class="font-medium">1</span> required
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-semibold text-slate-500">0 / 1</span>
+                                            <div class="w-16 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                                                <div class="h-full bg-emerald-500" style="width: 0%"></div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td class="p-4">

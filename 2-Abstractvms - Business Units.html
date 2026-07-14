@@ -169,162 +169,229 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button class="bg-blue text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-navy transition-colors flex items-center gap-2">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <select class="block w-full pl-3 pr-10 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue focus:border-blue appearance-none bg-white" title="Parent business unit">
+                                <option>Parent: Nexus Logistics (Client Root)</option>
+                                <option>— Midlands Region</option>
+                                <option>—— Midlands Distribution Centre</option>
+                                <option>——— Nights Department</option>
+                                <option>— Northern Region</option>
+                                <option>—— Northern Hub</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        <button class="bg-blue text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-navy transition-colors flex items-center gap-2 whitespace-nowrap">
                             <i class="fa-solid fa-plus"></i>
                             Add Business Unit
                         </button>
                     </div>
                 </div>
 
-                <!-- Business Units List (Cards) -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                    
-                    <!-- Unit Card 1 -->
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
-                        <div class="p-5 border-b border-gray-100 flex-1">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="h-10 w-10 rounded-lg bg-blue/10 flex items-center justify-center text-blue">
-                                        <i class="fa-solid fa-warehouse text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-base font-sora font-semibold text-navy">Midlands Distribution Centre</h3>
-                                        <p class="text-xs text-gray-500">Ref: BU-MDC-01</p>
-                                    </div>
-                                </div>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
-                                    Active
-                                </span>
-                            </div>
-                            
-                            <div class="space-y-3 mt-4">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-location-dot w-5"></i> Location</span>
-                                    <span class="font-medium text-navy">Birmingham, UK</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-user-tie w-5"></i> Manager</span>
-                                    <span class="font-medium text-navy">John Smith</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-users w-5"></i> Active Workers</span>
-                                    <span class="font-medium text-navy">85</span>
-                                </div>
-                            </div>
+                <!-- Business Unit Hierarchy (Tree View) -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-sora font-semibold text-navy">Organisation Hierarchy</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">Client → Region → Site → Department</p>
                         </div>
-                        <div class="bg-gray-50 px-5 py-3 border-t border-gray-200 flex justify-between items-center">
-                            <div class="text-xs text-gray-500">
-                                <span class="font-semibold text-navy">12</span> Open Vacancies
-                            </div>
-                            <div class="flex gap-2">
-                                <button class="text-gray-400 hover:text-blue transition-colors p-1" title="Edit Unit">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button class="text-gray-400 hover:text-navy transition-colors p-1" title="View Details">
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
+                        <div class="flex items-center gap-3 text-xs text-gray-500">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-hashtag text-gray-400"></i> Cost Centre</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-users text-gray-400"></i> Active Workers</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-briefcase text-gray-400"></i> Open Vacancies</span>
                         </div>
                     </div>
 
-                    <!-- Unit Card 2 -->
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
-                        <div class="p-5 border-b border-gray-100 flex-1">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="h-10 w-10 rounded-lg bg-blue/10 flex items-center justify-center text-blue">
-                                        <i class="fa-solid fa-warehouse text-lg"></i>
+                    <div class="p-4 overflow-x-auto">
+                        <!-- Level 1: Client Root -->
+                        <div class="tree-node">
+                            <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs w-4"></i>
+                                    <div class="h-9 w-9 rounded-lg bg-navy/10 flex items-center justify-center text-navy shrink-0"><i class="fa-solid fa-sitemap"></i></div>
+                                    <div class="min-w-0">
+                                        <p class="text-sm font-sora font-semibold text-navy truncate">Nexus Logistics <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Client Root</span></p>
+                                        <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-ROOT</span> · United Kingdom · Admin: Sarah Jenkins</p>
                                     </div>
-                                    <div>
-                                        <h3 class="text-base font-sora font-semibold text-navy">Northern Hub</h3>
-                                        <p class="text-xs text-gray-500">Ref: BU-NH-02</p>
+                                </div>
+                                <div class="flex items-center gap-5 shrink-0">
+                                    <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>156</span>
+                                    <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>42</span>
+                                    <div class="flex gap-1">
+                                        <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                        <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
                                     </div>
                                 </div>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
-                                    Active
-                                </span>
                             </div>
-                            
-                            <div class="space-y-3 mt-4">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-location-dot w-5"></i> Location</span>
-                                    <span class="font-medium text-navy">Manchester, UK</span>
+
+                            <!-- Level 2..4 wrapper with connector line -->
+                            <div class="ml-6 border-l border-gray-200 pl-4 space-y-1 mt-1">
+
+                                <!-- Level 2: Region -->
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <i class="fa-solid fa-chevron-down text-gray-400 text-xs w-4"></i>
+                                            <div class="h-9 w-9 rounded-lg bg-blue/10 flex items-center justify-center text-blue shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-sora font-semibold text-navy truncate">Midlands Region <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Region</span></p>
+                                                <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-MID</span> · Central England · Manager: John Smith</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-5 shrink-0">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mr-1">Active</span>
+                                            <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>85</span>
+                                            <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>12</span>
+                                            <div class="flex gap-1">
+                                                <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Level 3: Site -->
+                                    <div class="ml-6 border-l border-gray-200 pl-4 space-y-1 mt-1">
+                                        <div>
+                                            <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                                <div class="flex items-center gap-3 min-w-0">
+                                                    <i class="fa-solid fa-chevron-down text-gray-400 text-xs w-4"></i>
+                                                    <div class="h-9 w-9 rounded-lg bg-purple/10 flex items-center justify-center text-purple shrink-0"><i class="fa-solid fa-warehouse"></i></div>
+                                                    <div class="min-w-0">
+                                                        <p class="text-sm font-sora font-semibold text-navy truncate">Midlands Distribution Centre <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Site</span></p>
+                                                        <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-MDC-01</span> · Birmingham, UK · Manager: John Smith</p>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-5 shrink-0">
+                                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mr-1">Active</span>
+                                                    <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>85</span>
+                                                    <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>12</span>
+                                                    <div class="flex gap-1">
+                                                        <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                        <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Level 4: Department -->
+                                            <div class="ml-6 border-l border-gray-200 pl-4 space-y-1 mt-1">
+                                                <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                                    <div class="flex items-center gap-3 min-w-0">
+                                                        <i class="fa-solid fa-minus text-gray-300 text-xs w-4"></i>
+                                                        <div class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 shrink-0"><i class="fa-solid fa-moon"></i></div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-sora font-semibold text-navy truncate">Nights Department <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Department</span></p>
+                                                            <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-MDC-01-N</span> · Birmingham, UK · Supervisor: Rebecca Smith</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center gap-5 shrink-0">
+                                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mr-1">Active</span>
+                                                        <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>48</span>
+                                                        <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>3</span>
+                                                        <div class="flex gap-1">
+                                                            <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                            <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                                    <div class="flex items-center gap-3 min-w-0">
+                                                        <i class="fa-solid fa-minus text-gray-300 text-xs w-4"></i>
+                                                        <div class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 shrink-0"><i class="fa-solid fa-sun"></i></div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-sora font-semibold text-navy truncate">Days Department <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Department</span></p>
+                                                            <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-MDC-01-D</span> · Birmingham, UK · Supervisor: Tom Clarke</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center gap-5 shrink-0">
+                                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mr-1">Active</span>
+                                                        <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>37</span>
+                                                        <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>9</span>
+                                                        <div class="flex gap-1">
+                                                            <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                            <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-user-tie w-5"></i> Manager</span>
-                                    <span class="font-medium text-navy">Sarah Jones</span>
+
+                                <!-- Level 2: Northern Region -->
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <i class="fa-solid fa-chevron-down text-gray-400 text-xs w-4"></i>
+                                            <div class="h-9 w-9 rounded-lg bg-blue/10 flex items-center justify-center text-blue shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-sora font-semibold text-navy truncate">Northern Region <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Region</span></p>
+                                                <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-NTH</span> · North England · Manager: Sarah Jones</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-5 shrink-0">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mr-1">Active</span>
+                                            <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>42</span>
+                                            <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>8</span>
+                                            <div class="flex gap-1">
+                                                <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Level 3: Site -->
+                                    <div class="ml-6 border-l border-gray-200 pl-4 space-y-1 mt-1">
+                                        <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors">
+                                            <div class="flex items-center gap-3 min-w-0">
+                                                <i class="fa-solid fa-minus text-gray-300 text-xs w-4"></i>
+                                                <div class="h-9 w-9 rounded-lg bg-purple/10 flex items-center justify-center text-purple shrink-0"><i class="fa-solid fa-warehouse"></i></div>
+                                                <div class="min-w-0">
+                                                    <p class="text-sm font-sora font-semibold text-navy truncate">Northern Hub <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Site</span></p>
+                                                    <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-NH-02</span> · Manchester, UK · Manager: Sarah Jones</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-5 shrink-0">
+                                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20 mr-1">Active</span>
+                                                <span class="text-sm text-gray-700"><i class="fa-solid fa-users text-gray-400 mr-1"></i>42</span>
+                                                <span class="text-sm text-gray-700"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>8</span>
+                                                <div class="flex gap-1">
+                                                    <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                    <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-users w-5"></i> Active Workers</span>
-                                    <span class="font-medium text-navy">42</span>
+
+                                <!-- Level 2: London Region (Inactive) -->
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 px-3 py-3 rounded-lg hover:bg-gray-50 transition-colors opacity-75">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <i class="fa-solid fa-minus text-gray-300 text-xs w-4"></i>
+                                            <div class="h-9 w-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-sora font-semibold text-navy truncate">London Gateway <span class="ml-1 text-[10px] font-medium uppercase tracking-wide text-gray-400">Site</span></p>
+                                                <p class="text-xs text-gray-500 truncate"><span class="font-mono">CC-LG-03</span> · Essex, UK · Manager: Michael Davis</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-5 shrink-0">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200 mr-1">Inactive</span>
+                                            <span class="text-sm text-gray-500"><i class="fa-solid fa-users text-gray-400 mr-1"></i>0</span>
+                                            <span class="text-sm text-gray-500"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i>0</span>
+                                            <div class="flex gap-1">
+                                                <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Add child unit"><i class="fa-solid fa-plus"></i></button>
+                                                <button class="text-gray-400 hover:text-blue p-1.5 rounded hover:bg-blue/10 transition-colors" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-5 py-3 border-t border-gray-200 flex justify-between items-center">
-                            <div class="text-xs text-gray-500">
-                                <span class="font-semibold text-navy">8</span> Open Vacancies
-                            </div>
-                            <div class="flex gap-2">
-                                <button class="text-gray-400 hover:text-blue transition-colors p-1" title="Edit Unit">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button class="text-gray-400 hover:text-navy transition-colors p-1" title="View Details">
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </button>
+
                             </div>
                         </div>
                     </div>
-
-                    <!-- Unit Card 3 -->
-                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col opacity-75">
-                        <div class="p-5 border-b border-gray-100 flex-1">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="h-10 w-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500">
-                                        <i class="fa-solid fa-warehouse text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-base font-sora font-semibold text-navy">London Gateway</h3>
-                                        <p class="text-xs text-gray-500">Ref: BU-LG-03</p>
-                                    </div>
-                                </div>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
-                                    Inactive
-                                </span>
-                            </div>
-                            
-                            <div class="space-y-3 mt-4">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-location-dot w-5"></i> Location</span>
-                                    <span class="font-medium text-gray-600">Essex, UK</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-user-tie w-5"></i> Manager</span>
-                                    <span class="font-medium text-gray-600">Michael Davis</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-500"><i class="fa-solid fa-users w-5"></i> Active Workers</span>
-                                    <span class="font-medium text-gray-600">0</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 px-5 py-3 border-t border-gray-200 flex justify-between items-center">
-                            <div class="text-xs text-gray-500">
-                                <span class="font-semibold text-gray-600">0</span> Open Vacancies
-                            </div>
-                            <div class="flex gap-2">
-                                <button class="text-gray-400 hover:text-blue transition-colors p-1" title="Edit Unit">
-                                    <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button class="text-gray-400 hover:text-navy transition-colors p-1" title="View Details">
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
 
             </div>
         </main>

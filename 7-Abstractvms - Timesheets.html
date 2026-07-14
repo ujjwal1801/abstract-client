@@ -162,13 +162,67 @@
 
         <!-- Main Scrollable Content -->
         <main id="main-content" class="flex-1 overflow-y-auto p-6 bg-[#F3F4F6]">
-            <div class="max-w-[1600px] mx-auto space-y-6">
+            <div class="max-w-[1600px] mx-auto space-y-5">
+
+                <!-- Week Context Bar -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+                    <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <!-- Week Selector -->
+                            <div class="flex items-center bg-gray-50 border border-gray-300 rounded-md p-1">
+                                <button onclick="shiftWeek(-1)" class="px-2.5 py-1.5 text-sm font-medium text-gray-600 hover:text-navy transition-colors" title="Previous week"><i class="fa-solid fa-chevron-left"></i></button>
+                                <div class="px-4 py-1.5 text-sm font-semibold text-navy font-sora bg-white border border-gray-200 rounded shadow-sm whitespace-nowrap">
+                                    <i class="fa-regular fa-calendar mr-2 text-gray-400"></i> Week 24 · Mon 8 – Sun 14 Jun 2026
+                                </div>
+                                <button onclick="shiftWeek(1)" class="px-2.5 py-1.5 text-sm font-medium text-gray-600 hover:text-navy transition-colors" title="Next week"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+
+                            <!-- Timesheet Status (canonical) -->
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+                                <i class="fa-solid fa-pen-ruler text-[10px]"></i> Draft
+                            </span>
+
+                            <!-- Submission Deadline Indicator (TS-012) -->
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                                <i class="fa-solid fa-hourglass-half"></i> Submit by Sunday 23:59
+                            </span>
+
+                            <!-- BU Filter -->
+                            <div class="relative">
+                                <select class="appearance-none block w-52 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
+                                    <option>All Business Units</option>
+                                    <option>North Hub</option>
+                                    <option>Midlands Distribution</option>
+                                    <option>South Depot</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button onclick="openReturnDraft()" class="px-4 py-2 bg-white border border-danger/40 text-danger rounded-md text-sm font-medium hover:bg-danger/5 transition-colors flex items-center gap-2" title="Returns the week to Draft with a reason">
+                                <i class="fa-solid fa-rotate-left text-xs"></i> Return to Draft
+                            </button>
+                            <button class="px-5 py-2 bg-blue text-white rounded-md text-sm font-semibold hover:bg-navy transition-colors shadow-sm flex items-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-xs"></i> Submit Week
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charge-rates-only reassurance (segregation §3) -->
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-2.5 flex items-center gap-2.5">
+                    <i class="fa-solid fa-shield-halved text-emerald-600"></i>
+                    <p class="text-sm text-emerald-800 font-medium">Visibility confirmed — all costs shown at <span class="font-bold">charge rates only</span>. Pay rates, margins and booking source are never displayed here.</p>
+                </div>
 
                 <!-- KPI Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-l-4 border-l-warning">
                         <div class="flex justify-between items-start mb-2">
-                            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Pending Approval</p>
+                            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Awaiting Approval</p>
                             <i class="fa-solid fa-clock text-warning bg-warning/10 p-2 rounded-lg"></i>
                         </div>
                         <div class="flex items-end gap-2">
@@ -210,346 +264,79 @@
                     </div>
                 </div>
 
-                <!-- Filters & Controls Card -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        
-                        <div class="flex flex-wrap items-center gap-3">
-                            <!-- Date Range -->
-                            <div class="flex items-center bg-gray-50 border border-gray-300 rounded-md p-1">
-                                <button class="px-3 py-1 text-sm font-medium text-gray-600 hover:text-navy transition-colors"><i class="fa-solid fa-chevron-left"></i></button>
-                                <div class="px-3 py-1 text-sm font-semibold text-navy font-sora bg-white border border-gray-200 rounded shadow-sm">
-                                    <i class="fa-regular fa-calendar mr-2 text-gray-400"></i> Oct 21 - Oct 27, 2024
-                                </div>
-                                <button class="px-3 py-1 text-sm font-medium text-gray-600 hover:text-navy transition-colors"><i class="fa-solid fa-chevron-right"></i></button>
-                            </div>
-
-                            <!-- BU Filter -->
-                            <div class="relative">
-                                <select class="appearance-none block w-56 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
-                                    <option>All Business Units</option>
-                                    <option>Midlands Dist. (All)</option>
-                                    <option>North Hub</option>
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                                </div>
-                            </div>
-                            
-                            <!-- Status Filter -->
-                            <div class="relative">
-                                <select class="appearance-none block w-40 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
-                                    <option>Pending Only</option>
-                                    <option>Approved</option>
-                                    <option>Rejected</option>
-                                    <option>All Statuses</option>
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
-                                <i class="fa-solid fa-download text-gray-400"></i> Export
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timesheets Table List -->
+                <!-- Weekly Entry Grid -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                    
-                    <!-- Table Toolbar -->
-                    <div class="p-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" class="custom-checkbox w-4 h-4 rounded border-gray-300 text-blue focus:ring-blue cursor-pointer appearance-none border bg-white">
-                            <span class="text-sm font-medium text-gray-600">Select All (14)</span>
+
+                    <!-- Bulk Action Row (Rapid Entry — TS-031/032) -->
+                    <div class="p-4 border-b border-gray-200 bg-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-sm font-sora font-semibold text-navy flex items-center gap-2">
+                                <i class="fa-solid fa-table-cells text-blue"></i> Weekly entry — all booked candidates
+                            </h2>
+                            <p class="text-xs text-gray-500 mt-0.5">6 candidates booked to your organisation this week. Type hours to mark a day as Worked, or click a cell to record an absence.</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button class="px-4 py-1.5 bg-white border border-danger text-danger rounded-md text-sm font-medium hover:bg-danger/5 transition-colors opacity-50 cursor-not-allowed">
-                                Reject Selected
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button onclick="fillAll()" class="px-4 py-2 bg-blue text-white rounded-md text-sm font-semibold hover:bg-navy transition-colors shadow-sm flex items-center gap-2" title="Fill scheduled working days with configured shift hours for every booked candidate">
+                                <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Fill all from shift pattern
                             </button>
-                            <button class="px-4 py-1.5 bg-blue text-white rounded-md text-sm font-medium hover:bg-navy transition-colors shadow-sm">
-                                Approve Selected
+                            <button onclick="fillAll()" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
+                                <i class="fa-solid fa-copy text-gray-400 text-xs"></i> Copy last week
                             </button>
                         </div>
                     </div>
 
-                    <!-- The Table -->
+                    <!-- Day-status legend (always visible) -->
+                    <div class="px-4 py-3 border-b border-gray-200 bg-white flex flex-wrap items-center gap-x-5 gap-y-2">
+                        <span class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Day status</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700"><span class="w-3 h-3 rounded-sm bg-emerald-50 border border-emerald-200"></span> Worked</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-amber-700"><i class="fa-solid fa-notes-medical text-amber-500 text-[11px]"></i> Sick Leave</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-blue-700"><i class="fa-solid fa-umbrella-beach text-blue-500 text-[11px]"></i> Holiday</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-red-700"><i class="fa-solid fa-user-xmark text-red-500 text-[11px]"></i> No-show</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500"><i class="fa-solid fa-minus text-slate-400 text-[11px]"></i> Not Booked</span>
+                        <span class="ml-auto text-[11px] text-gray-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-info"></i> Shift hours come from the booking's configured pattern.</span>
+                    </div>
+
+                    <!-- The Grid -->
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="w-12 px-4 py-3"></th>
-                                    <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Candidate / Role</th>
-                                    <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Period / Shift</th>
-                                    <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Hours Summary</th>
-                                    <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Est. Charge</th>
-                                    <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Exceptions</th>
-                                    <th scope="col" class="px-4 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                                    <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
+                        <table class="min-w-full border-separate border-spacing-0">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th scope="col" class="sticky left-0 z-10 bg-gray-50 text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[240px]">Candidate</th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[92px]">Mon<span class="block text-[10px] font-normal normal-case text-gray-400">8 Jun</span></th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[92px]">Tue<span class="block text-[10px] font-normal normal-case text-gray-400">9 Jun</span></th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[92px]">Wed<span class="block text-[10px] font-normal normal-case text-gray-400">10 Jun</span></th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[92px]">Thu<span class="block text-[10px] font-normal normal-case text-gray-400">11 Jun</span></th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[92px]">Fri<span class="block text-[10px] font-normal normal-case text-gray-400">12 Jun</span></th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-200 min-w-[92px] bg-gray-100/60">Sat<span class="block text-[10px] font-normal normal-case text-gray-400">13 Jun</span></th>
+                                    <th scope="col" class="px-2 py-3 text-center text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-200 min-w-[92px] bg-gray-100/60">Sun<span class="block text-[10px] font-normal normal-case text-gray-400">14 Jun</span></th>
+                                    <th scope="col" class="px-3 py-3 text-center text-xs font-semibold text-navy uppercase tracking-wider border-b border-gray-200 min-w-[80px]">Week<br>Total</th>
+                                    <th scope="col" class="px-3 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[110px]">Week Charge</th>
+                                    <th scope="col" class="px-3 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200 min-w-[120px]">Rapid</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                
-                                <!-- Row 1: Normal Pending -->
-                                <tr class="hover:bg-blue/5 transition-colors group">
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <input type="checkbox" class="custom-checkbox w-4 h-4 rounded border-gray-300 text-blue focus:ring-blue cursor-pointer appearance-none border bg-white">
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center text-xs font-bold font-sora">MJ</div>
-                                            <div>
-                                                <div class="flex items-center gap-2">
-                                                    <p class="text-sm font-semibold text-navy">Marcus Johnson</p>
-                                                    <i class="fa-solid fa-shield-check text-success text-[10px]" title="Compliant"></i>
-                                                </div>
-                                                <p class="text-xs text-gray-500">Warehouse Operative • Apex Staffing</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <p class="text-sm font-medium text-gray-900">Oct 21, 2024</p>
-                                        <p class="text-xs text-gray-500">22:00 - 06:00 (Nights)</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex flex-col gap-1">
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-gray-500">Regular:</span>
-                                                <span class="font-medium text-navy">7.5h</span>
-                                            </div>
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-gray-500">Break:</span>
-                                                <span class="font-medium text-gray-500">0.5h</span>
-                                            </div>
-                                            <div class="w-32 h-px bg-gray-200 my-0.5"></div>
-                                            <div class="flex justify-between w-32 text-xs font-semibold">
-                                                <span class="text-navy">Total Pay Hrs:</span>
-                                                <span class="text-navy">7.5h</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right">
-                                        <p class="text-sm font-bold text-navy font-sora">£123.75</p>
-                                        <p class="text-[10px] text-gray-500 uppercase">Charge Rate</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <span class="text-sm text-gray-400 italic">None</span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-center">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20">
-                                            Pending
-                                        </span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button class="p-1.5 text-danger hover:bg-danger/10 rounded border border-transparent hover:border-danger/30 transition-colors" title="Reject">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </button>
-                                            <button class="p-1.5 text-success hover:bg-success/10 rounded border border-transparent hover:border-success/30 transition-colors" title="Approve">
-                                                <i class="fa-solid fa-check"></i>
-                                            </button>
-                                            <button class="p-1.5 text-blue hover:bg-blue/10 rounded border border-transparent hover:border-blue/30 transition-colors ml-1" title="View Details">
-                                                <i class="fa-solid fa-ellipsis-vertical px-1"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+                            <tbody id="ts-body"></tbody>
+                            <tfoot>
+                                <tr class="bg-gray-50">
+                                    <td class="sticky left-0 z-10 bg-gray-50 px-4 py-3 text-sm font-sora font-semibold text-navy">Week total (charge rates only)</td>
+                                    <td colspan="7" class="px-2 py-3 text-right text-xs text-gray-500" id="foot-note">210.0 worked hours across 6 candidates</td>
+                                    <td class="px-3 py-3 text-center"><span class="text-base font-bold text-navy font-sora" id="foot-hours">210.0</span></td>
+                                    <td class="px-3 py-3 text-right"><span class="text-base font-bold text-purple font-sora" id="foot-charge">£3,380.00</span></td>
+                                    <td class="px-3 py-3"></td>
                                 </tr>
-
-                                <!-- Row 2: Exception/Flagged -->
-                                <tr class="hover:bg-blue/5 transition-colors group bg-danger/5 border-l-4 border-l-danger">
-                                    <td class="px-4 py-4 whitespace-nowrap pl-3"> <!-- Adjust pl-3 to account for border-l-4 -->
-                                        <input type="checkbox" class="custom-checkbox w-4 h-4 rounded border-gray-300 text-blue focus:ring-blue cursor-pointer appearance-none border bg-white">
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-purple/20 text-purple flex items-center justify-center text-xs font-bold font-sora">SW</div>
-                                            <div>
-                                                <div class="flex items-center gap-2">
-                                                    <p class="text-sm font-semibold text-navy">Sarah Williams</p>
-                                                    <i class="fa-solid fa-shield-check text-success text-[10px]" title="Compliant"></i>
-                                                </div>
-                                                <p class="text-xs text-gray-500">FLT Driver • Rapid Recruit</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <p class="text-sm font-medium text-gray-900">Oct 21, 2024</p>
-                                        <p class="text-xs text-gray-500">06:00 - 15:30 (Days)</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex flex-col gap-1">
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-gray-500">Regular:</span>
-                                                <span class="font-medium text-navy">8.0h</span>
-                                            </div>
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-danger font-medium">Overtime:</span>
-                                                <span class="font-bold text-danger">1.5h</span>
-                                            </div>
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-gray-500">Break:</span>
-                                                <span class="font-medium text-gray-500">0h</span>
-                                            </div>
-                                            <div class="w-32 h-px bg-gray-200 my-0.5"></div>
-                                            <div class="flex justify-between w-32 text-xs font-semibold">
-                                                <span class="text-navy">Total Pay Hrs:</span>
-                                                <span class="text-navy">9.5h</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right">
-                                        <p class="text-sm font-bold text-navy font-sora">£180.50</p>
-                                        <p class="text-[10px] text-gray-500 uppercase">Charge Rate</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex flex-col gap-1">
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-danger/10 text-danger border border-danger/20 w-fit">
-                                                <i class="fa-solid fa-triangle-exclamation mr-1"></i> Unapproved Overtime
-                                            </span>
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-warning/10 text-warning border border-warning/20 w-fit">
-                                                <i class="fa-solid fa-circle-exclamation mr-1"></i> Missing Break
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-center">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20">
-                                            Pending
-                                        </span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <div class="flex items-center justify-end gap-2">
-                                            <button class="px-3 py-1.5 text-xs font-medium bg-white border border-gray-300 rounded text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
-                                                Review
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <!-- Row 3: Normal Pending, Grouped UI idea -->
-                                <tr class="hover:bg-blue/5 transition-colors group">
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <input type="checkbox" class="custom-checkbox w-4 h-4 rounded border-gray-300 text-blue focus:ring-blue cursor-pointer appearance-none border bg-white">
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-blue/20 text-blue flex items-center justify-center text-xs font-bold font-sora">DP</div>
-                                            <div>
-                                                <div class="flex items-center gap-2">
-                                                    <p class="text-sm font-semibold text-navy">David Patel</p>
-                                                    <i class="fa-solid fa-shield-check text-success text-[10px]" title="Compliant"></i>
-                                                </div>
-                                                <p class="text-xs text-gray-500">Picker/Packer • StaffPlus</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <p class="text-sm font-medium text-gray-900">Oct 22, 2024</p>
-                                        <p class="text-xs text-gray-500">14:00 - 22:00 (Lates)</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex flex-col gap-1">
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-gray-500">Regular:</span>
-                                                <span class="font-medium text-navy">7.5h</span>
-                                            </div>
-                                            <div class="flex justify-between w-32 text-xs">
-                                                <span class="text-gray-500">Break:</span>
-                                                <span class="font-medium text-gray-500">0.5h</span>
-                                            </div>
-                                            <div class="w-32 h-px bg-gray-200 my-0.5"></div>
-                                            <div class="flex justify-between w-32 text-xs font-semibold">
-                                                <span class="text-navy">Total Pay Hrs:</span>
-                                                <span class="text-navy">7.5h</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right">
-                                        <p class="text-sm font-bold text-navy font-sora">£116.25</p>
-                                        <p class="text-[10px] text-gray-500 uppercase">Charge Rate</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <span class="text-sm text-gray-400 italic">None</span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-center">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-warning/10 text-warning border border-warning/20">
-                                            Pending
-                                        </span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button class="p-1.5 text-danger hover:bg-danger/10 rounded border border-transparent hover:border-danger/30 transition-colors" title="Reject">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </button>
-                                            <button class="p-1.5 text-success hover:bg-success/10 rounded border border-transparent hover:border-success/30 transition-colors" title="Approve">
-                                                <i class="fa-solid fa-check"></i>
-                                            </button>
-                                            <button class="p-1.5 text-blue hover:bg-blue/10 rounded border border-transparent hover:border-blue/30 transition-colors ml-1" title="View Details">
-                                                <i class="fa-solid fa-ellipsis-vertical px-1"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                
-                                <!-- Row 4: Approved Example (Read only style) -->
-                                <tr class="bg-gray-50/50">
-                                    <td class="px-4 py-4 whitespace-nowrap">
-                                        <input type="checkbox" disabled class="w-4 h-4 rounded border-gray-200 bg-gray-100 cursor-not-allowed appearance-none border">
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap opacity-75">
-                                        <div class="flex items-center gap-3">
-                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Avatar" class="w-8 h-8 rounded-full border border-gray-300">
-                                            <div>
-                                                <div class="flex items-center gap-2">
-                                                    <p class="text-sm font-semibold text-gray-700">James Smith</p>
-                                                </div>
-                                                <p class="text-xs text-gray-500">Warehouse Operative</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap opacity-75">
-                                        <p class="text-sm font-medium text-gray-700">Oct 20, 2024</p>
-                                        <p class="text-xs text-gray-500">06:00 - 14:00</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap opacity-75">
-                                        <div class="flex justify-between w-32 text-xs font-semibold">
-                                            <span class="text-gray-700">Total Pay Hrs:</span>
-                                            <span class="text-gray-700">7.5h</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right opacity-75">
-                                        <p class="text-sm font-bold text-gray-700 font-sora">£123.75</p>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap opacity-75">
-                                        <span class="text-sm text-gray-400 italic">None</span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-center">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
-                                            Approved
-                                        </span>
-                                    </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <button class="text-gray-400 hover:text-blue transition-colors text-xs font-medium">
-                                            View
-                                        </button>
-                                    </td>
-                                </tr>
-
-                            </tbody>
+                            </tfoot>
                         </table>
                     </div>
-                    
-                    <!-- Pagination Footer -->
-                    <div class="p-4 border-t border-gray-200 bg-white flex items-center justify-between">
-                        <div class="text-sm text-gray-500">
-                            Showing <span class="font-medium text-navy">1</span> to <span class="font-medium text-navy">10</span> of <span class="font-medium text-navy">14</span> pending
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button class="px-3 py-1 border border-gray-300 rounded text-sm font-medium text-gray-400 cursor-not-allowed bg-gray-50">Previous</button>
-                            <button class="px-3 py-1 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">Next</button>
+
+                    <!-- Grid footer note -->
+                    <div class="p-4 border-t border-gray-200 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                        <p class="text-xs text-gray-500 flex items-center gap-1.5"><i class="fa-solid fa-lock text-gray-400"></i> Costs are shown at charge rates only. Pay rates, margins and booking source are never displayed to clients.</p>
+                        <div class="flex items-center gap-3">
+                            <button onclick="openReturnDraft()" class="px-4 py-2 bg-white border border-danger/40 text-danger rounded-md text-sm font-medium hover:bg-danger/5 transition-colors flex items-center gap-2">
+                                <i class="fa-solid fa-rotate-left text-xs"></i> Return to Draft
+                            </button>
+                            <button class="px-5 py-2 bg-blue text-white rounded-md text-sm font-semibold hover:bg-navy transition-colors shadow-sm flex items-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-xs"></i> Submit Week
+                            </button>
                         </div>
                     </div>
 
@@ -558,6 +345,284 @@
             </div>
         </main>
     </div>
+
+    <!-- Absence Modal (static) -->
+    <div id="absence-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-navy/50 backdrop-blur-sm" onclick="closeAbsence()"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <div>
+                    <h3 class="text-base font-sora font-semibold text-navy">Record absence</h3>
+                    <p id="absence-context" class="text-xs text-gray-500 mt-0.5">Sarah Williams · Tue 9 Jun</p>
+                </div>
+                <button onclick="closeAbsence()" class="w-8 h-8 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-navy transition-colors flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="p-6 space-y-5">
+                <!-- Day status choice -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Day status</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="absence-status" value="sick" onchange="updateModalPay()" class="peer sr-only" checked>
+                            <div class="rounded-lg border border-gray-200 peer-checked:border-amber-400 peer-checked:bg-amber-50 px-3 py-3 flex flex-col items-center gap-1 text-center transition-colors">
+                                <i class="fa-solid fa-notes-medical text-amber-500"></i>
+                                <span class="text-xs font-semibold text-gray-700">Sick Leave</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="absence-status" value="holiday" onchange="updateModalPay()" class="peer sr-only">
+                            <div class="rounded-lg border border-gray-200 peer-checked:border-blue-400 peer-checked:bg-blue-50 px-3 py-3 flex flex-col items-center gap-1 text-center transition-colors">
+                                <i class="fa-solid fa-umbrella-beach text-blue-500"></i>
+                                <span class="text-xs font-semibold text-gray-700">Holiday</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="absence-status" value="noshow" onchange="updateModalPay()" class="peer sr-only">
+                            <div class="rounded-lg border border-gray-200 peer-checked:border-red-400 peer-checked:bg-red-50 px-3 py-3 flex flex-col items-center gap-1 text-center transition-colors">
+                                <i class="fa-solid fa-user-xmark text-red-500"></i>
+                                <span class="text-xs font-semibold text-gray-700">No-show</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Reason -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Reason</label>
+                    <textarea id="absence-reason" rows="3" class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue" placeholder="e.g. Called in unwell, expected back Wednesday"></textarea>
+                </div>
+
+                <!-- Pay impact (derived) -->
+                <div class="rounded-lg bg-gray-50 border border-gray-200 px-4 py-3 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Pay impact</p>
+                        <p class="text-[11px] text-gray-400 mt-0.5">Set by your leave policy</p>
+                    </div>
+                    <span id="modal-pay-pill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <i class="fa-solid fa-sterling-sign text-[10px]"></i> Paid
+                    </span>
+                </div>
+
+                <!-- Request agency confirmation -->
+                <div class="rounded-lg border border-amber-200 bg-amber-50/60 px-4 py-3">
+                    <label class="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" id="absence-confirm" class="custom-checkbox mt-0.5 w-4 h-4 rounded border-gray-300 text-blue focus:ring-blue cursor-pointer appearance-none border bg-white shrink-0">
+                        <span>
+                            <span class="text-sm font-semibold text-navy">Request agency confirmation</span>
+                            <span class="block text-xs text-gray-500 mt-0.5">The supplying agency will be asked to justify this absence. This does not delay your timesheet.</span>
+                        </span>
+                    </label>
+                    <p class="text-[11px] text-gray-400 mt-2 flex items-center gap-1.5 pl-7"><i class="fa-solid fa-circle-info"></i> This option is hidden for workers supplied directly by Abstract, as there is no agency to confirm.</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <button onclick="closeAbsence()" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">Cancel</button>
+                <button onclick="saveAbsence()" class="px-5 py-2 bg-blue text-white rounded-md text-sm font-semibold hover:bg-navy transition-colors shadow-sm">Save absence</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Return to Draft Modal (reason required) -->
+    <div id="return-draft-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-navy/50 backdrop-blur-sm" onclick="closeReturnDraft()"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl border border-gray-200 w-full max-w-md">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                <h3 class="text-base font-sora font-semibold text-navy">Return week to Draft</h3>
+                <button onclick="closeReturnDraft()" class="w-8 h-8 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-navy transition-colors flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 space-y-3">
+                <p class="text-sm text-gray-600">This returns the timesheet to <span class="font-semibold text-navy">Draft</span> so it can be edited and re-submitted. A reason is required.</p>
+                <textarea rows="3" class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue" placeholder="Reason for returning to Draft"></textarea>
+            </div>
+            <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <button onclick="closeReturnDraft()" class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">Cancel</button>
+                <button onclick="closeReturnDraft()" class="px-5 py-2 bg-danger text-white rounded-md text-sm font-semibold hover:bg-red-700 transition-colors shadow-sm">Return to Draft</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---- Data model (Draft week — fully editable) ----
+        const DAYS  = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        const DATES = ['8 Jun','9 Jun','10 Jun','11 Jun','12 Jun','13 Jun','14 Jun'];
+        const wk = h => ({status:'worked', hours:h});
+        const nb = () => ({status:'notbooked'});
+        const ab = (status, pay, confirm) => ({status, pay, confirm, reason:''});
+
+        const cands = [
+          {id:'mj', name:'Marcus Johnson', initials:'MJ', avatar:'bg-navy text-white',   role:'Warehouse Operative · North Hub',        rate:16.50, shift:8,   workDays:[0,1,2,3,4],
+            days:[wk(8),wk(8),wk(8),wk(8),wk(8),nb(),nb()]},
+          {id:'sw', name:'Sarah Williams', initials:'SW', avatar:'bg-purple/20 text-purple', role:'FLT Driver · Midlands Distribution',   rate:16.50, shift:8,   workDays:[0,1,2,3,4],
+            days:[wk(8),ab('sick','Paid','Awaiting agency'),wk(8),wk(8),wk(8),nb(),nb()]},
+          {id:'dp', name:'David Patel', initials:'DP', avatar:'bg-navy text-white',       role:'Picker/Packer · North Hub',              rate:16.00, shift:7.5, workDays:[0,1,2,3,4],
+            days:[wk(7.5),wk(7.5),wk(7.5),wk(7.5),ab('holiday','Paid',null),nb(),nb()]},
+          {id:'ak', name:'Aisha Khan', initials:'AK', avatar:'bg-navy text-white',        role:'Warehouse Operative · South Depot',      rate:16.00, shift:8,   workDays:[0,1,2,3,4],
+            days:[wk(8),wk(8),ab('noshow','Unpaid',null),wk(8),wk(8),nb(),nb()]},
+          {id:'tb', name:'Tom Bryant', initials:'TB', avatar:'bg-purple/20 text-purple',  role:'Cleaner · Midlands Distribution',        rate:15.00, shift:6,   workDays:[0,1,2,3,4,5],
+            days:[wk(6),wk(6),wk(6),wk(6),wk(6),wk(6),nb()]},
+          {id:'go', name:'Grace Owusu', initials:'GO', avatar:'bg-navy text-white',       role:'Forklift Operative · North Hub',         rate:16.50, shift:8,   workDays:[0,1,2,3,4],
+            days:[wk(8),wk(8),wk(8),wk(8),wk(8),nb(),nb()]},
+        ];
+
+        let editing = null;      // {cid, d}
+        let modalTarget = null;  // {cid, d} for absence modal
+
+        const money = n => '£' + n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+        const getCand = id => cands.find(c => c.id === id);
+        const workedHours = c => c.days.reduce((t,x)=> t + (x.status==='worked' ? (x.hours||0) : 0), 0);
+
+        function payPill(pay){
+          if(pay==='Unpaid') return '<span class="inline-flex px-1.5 rounded-full text-[8px] font-bold bg-slate-200 text-slate-600 leading-tight">Unpaid</span>';
+          return '<span class="inline-flex px-1.5 rounded-full text-[8px] font-bold bg-emerald-100 text-emerald-700 leading-tight">Paid</span>';
+        }
+        function confirmPill(state){
+          if(state==='Justified') return '<span class="inline-flex px-1.5 rounded-full text-[8px] font-semibold bg-emerald-100 text-emerald-700 leading-tight">Justified</span>';
+          if(state) return '<span class="inline-flex px-1.5 rounded-full text-[8px] font-semibold bg-amber-200/70 text-amber-800 leading-tight">Awaiting agency</span>';
+          return '';
+        }
+
+        function cellHtml(c, d){
+          const day = c.days[d];
+          const wknd = (d>=5) ? ' bg-gray-50/60' : '';
+          // editing state — inline editor
+          if(editing && editing.cid===c.id && editing.d===d){
+            const cur = day.status==='worked' ? day.hours : '';
+            return '<td class="p-1.5 border-b border-gray-100'+wknd+'">'
+              + '<div class="flex flex-col items-center gap-1">'
+              +   '<input id="cell-input" type="number" step="0.5" min="0" value="'+cur+'" '
+              +     'class="w-16 h-8 text-center text-sm font-bold text-navy border-2 border-blue rounded-md focus:outline-none" '
+              +     'onblur="commitHours(this.value)" '
+              +     'onkeydown="if(event.key===\'Enter\'){commitHours(this.value)} else if(event.key===\'Escape\'){cancelEdit()}">'
+              +   '<div class="flex gap-0.5">'
+              +     '<button type="button" title="Sick Leave" onmousedown="event.preventDefault()" onclick="pickStatus(\'sick\')" class="w-5 h-5 rounded text-[9px] font-bold bg-amber-100 text-amber-700 hover:bg-amber-200">S</button>'
+              +     '<button type="button" title="Holiday" onmousedown="event.preventDefault()" onclick="pickStatus(\'holiday\')" class="w-5 h-5 rounded text-[9px] font-bold bg-blue-100 text-blue-700 hover:bg-blue-200">H</button>'
+              +     '<button type="button" title="No-show" onmousedown="event.preventDefault()" onclick="pickStatus(\'noshow\')" class="w-5 h-5 rounded text-[9px] font-bold bg-red-100 text-red-700 hover:bg-red-200">N</button>'
+              +     '<button type="button" title="Not booked" onmousedown="event.preventDefault()" onclick="pickStatus(\'nb\')" class="w-5 h-5 rounded text-[9px] font-bold bg-slate-100 text-slate-500 hover:bg-slate-200">—</button>'
+              +     '<button type="button" title="Apply hours" onmousedown="event.preventDefault()" onclick="commitHours(document.getElementById(\'cell-input\').value)" class="w-5 h-5 rounded text-[9px] bg-emerald-100 text-emerald-700 hover:bg-emerald-200"><i class="fa-solid fa-check"></i></button>'
+              +   '</div>'
+              + '</div></td>';
+          }
+          const open = 'onclick="editCell(\''+c.id+'\','+d+')"';
+          if(day.status==='worked'){
+            return '<td class="p-1.5 border-b border-gray-100'+wknd+'">'
+              + '<button '+open+' class="w-full h-14 rounded-lg border border-emerald-200 bg-white hover:bg-emerald-50 flex flex-col items-center justify-center transition-colors">'
+              + '<span class="text-sm font-bold text-emerald-700 font-sora">'+day.hours.toFixed(1)+'</span>'
+              + '<span class="text-[9px] text-emerald-600 uppercase tracking-wide">Worked</span></button></td>';
+          }
+          if(day.status==='notbooked'){
+            return '<td class="p-1.5 border-b border-gray-100'+wknd+'">'
+              + '<button '+open+' class="w-full h-14 rounded-lg border border-slate-200 bg-slate-100 hover:bg-slate-200/70 flex flex-col items-center justify-center transition-colors">'
+              + '<i class="fa-solid fa-minus text-slate-400"></i><span class="text-[9px] text-slate-400 uppercase tracking-wide mt-0.5">Not Booked</span></button></td>';
+          }
+          // absence
+          const meta = {
+            sick:    {cls:'border-amber-200 bg-amber-50 hover:bg-amber-100', icon:'fa-notes-medical text-amber-600', lbl:'Sick', lc:'text-amber-700'},
+            holiday: {cls:'border-blue-200 bg-blue-50 hover:bg-blue-100',    icon:'fa-umbrella-beach text-blue-600', lbl:'Holiday', lc:'text-blue-700'},
+            noshow:  {cls:'border-red-200 bg-red-50 hover:bg-red-100',       icon:'fa-user-xmark text-red-600', lbl:'No-show', lc:'text-red-700'}
+          }[day.status];
+          return '<td class="p-1.5 border-b border-gray-100'+wknd+'">'
+            + '<button '+open+' class="w-full min-h-14 rounded-lg border '+meta.cls+' flex flex-col items-center justify-center gap-0.5 py-1.5 transition-colors">'
+            + '<i class="fa-solid '+meta.icon+'"></i>'
+            + '<span class="text-[9px] font-semibold '+meta.lc+' uppercase tracking-wide">'+meta.lbl+'</span>'
+            + payPill(day.pay) + confirmPill(day.confirm)
+            + '</button></td>';
+        }
+
+        function rowHtml(c){
+          let total = workedHours(c);
+          let charge = total * c.rate;
+          let cells = '';
+          for(let d=0; d<7; d++) cells += cellHtml(c, d);
+          return '<tr class="hover:bg-blue/5 transition-colors group">'
+            + '<td class="sticky left-0 z-10 bg-white group-hover:bg-[#eef3ff] px-4 py-3 border-b border-gray-100 align-middle">'
+            +   '<div class="flex items-center gap-3">'
+            +     '<div class="w-8 h-8 rounded-full '+c.avatar+' flex items-center justify-center text-xs font-bold font-sora shrink-0">'+c.initials+'</div>'
+            +     '<div class="min-w-0"><p class="text-sm font-semibold text-navy truncate">'+c.name+'</p>'
+            +       '<p class="text-xs text-gray-500 truncate">'+c.role+'</p></div>'
+            +   '</div></td>'
+            + cells
+            + '<td class="px-3 py-3 border-b border-gray-100 text-center"><span class="text-base font-bold text-navy font-sora">'+total.toFixed(1)+'</span></td>'
+            + '<td class="px-3 py-3 border-b border-gray-100 text-right"><p class="text-sm font-bold text-navy font-sora">'+money(charge)+'</p><p class="text-[9px] text-gray-400 uppercase">Charge</p></td>'
+            + '<td class="px-3 py-3 border-b border-gray-100 text-center">'
+            +   '<button onclick="fillWeek(\''+c.id+'\')" class="px-2.5 py-1.5 bg-blue/10 text-blue rounded-md text-xs font-semibold hover:bg-blue hover:text-white transition-colors flex items-center gap-1.5 mx-auto" title="Fill scheduled working days with configured shift hours"><i class="fa-solid fa-bolt text-[10px]"></i> Fill week</button>'
+            + '</td></tr>';
+        }
+
+        function render(){
+          document.getElementById('ts-body').innerHTML = cands.map(rowHtml).join('');
+          let gh=0, gc=0;
+          cands.forEach(c=>{ const h=workedHours(c); gh+=h; gc+=h*c.rate; });
+          document.getElementById('foot-hours').textContent = gh.toFixed(1);
+          document.getElementById('foot-charge').textContent = money(gc);
+          document.getElementById('foot-note').textContent = gh.toFixed(1)+' worked hours across '+cands.length+' candidates';
+          if(editing){ const i=document.getElementById('cell-input'); if(i){ i.focus(); i.select(); } }
+        }
+
+        // ---- Interactions ----
+        function editCell(cid, d){ editing = {cid, d}; render(); }
+        function cancelEdit(){ editing = null; render(); }
+        function commitHours(v){
+          if(!editing) return;
+          const c = getCand(editing.cid);
+          const n = parseFloat(v);
+          c.days[editing.d] = (v==='' || isNaN(n) || n<=0) ? nb() : wk(n);
+          editing = null; render();
+        }
+        function fillWeek(cid){
+          const c = getCand(cid);
+          for(let d=0; d<7; d++) c.days[d] = c.workDays.includes(d) ? wk(c.shift) : nb();
+          editing = null; render();
+        }
+        function fillAll(){ cands.forEach(c => fillWeek(c.id)); }
+
+        // ---- Absence modal wiring ----
+        function pickStatus(status){
+          if(!editing) return;
+          if(status==='nb'){ getCand(editing.cid).days[editing.d] = nb(); editing=null; render(); return; }
+          modalTarget = {cid:editing.cid, d:editing.d};
+          const c = getCand(editing.cid);
+          const r = document.querySelector('input[name=absence-status][value='+status+']'); if(r) r.checked = true;
+          document.getElementById('absence-reason').value = '';
+          document.getElementById('absence-confirm').checked = false;
+          updateModalPay();
+          document.getElementById('absence-context').textContent = c.name + ' · ' + DAYS[editing.d] + ' ' + DATES[editing.d];
+          document.getElementById('absence-modal').classList.remove('hidden');
+        }
+        function selectedStatus(){ const el=document.querySelector('input[name=absence-status]:checked'); return el?el.value:'sick'; }
+        function updateModalPay(){
+          const pay = (selectedStatus()==='noshow') ? 'Unpaid' : 'Paid';
+          const pill = document.getElementById('modal-pay-pill');
+          if(!pill) return;
+          if(pay==='Unpaid'){
+            pill.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200';
+            pill.innerHTML = '<i class="fa-solid fa-sterling-sign text-[10px]"></i> Unpaid';
+          } else {
+            pill.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
+            pill.innerHTML = '<i class="fa-solid fa-sterling-sign text-[10px]"></i> Paid';
+          }
+        }
+        function saveAbsence(){
+          if(!modalTarget){ closeAbsence(); return; }
+          const c = getCand(modalTarget.cid);
+          const status = selectedStatus();
+          const pay = (status==='noshow') ? 'Unpaid' : 'Paid';
+          const confirmReq = document.getElementById('absence-confirm').checked;
+          c.days[modalTarget.d] = {status, pay, confirm: confirmReq ? 'Awaiting agency' : null, reason: document.getElementById('absence-reason').value};
+          modalTarget = null; editing = null; closeAbsence(); render();
+        }
+
+        // ---- Modals (kept) ----
+        function openAbsence(){ document.getElementById('absence-modal').classList.remove('hidden'); }
+        function closeAbsence(){ document.getElementById('absence-modal').classList.add('hidden'); }
+        function openReturnDraft(){ document.getElementById('return-draft-modal').classList.remove('hidden'); }
+        function closeReturnDraft(){ document.getElementById('return-draft-modal').classList.add('hidden'); }
+        function shiftWeek(dir){ /* static mockup — week navigation is illustrative */ }
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ cancelEdit(); closeAbsence(); closeReturnDraft(); } });
+
+        render();
+    </script>
 
 </body>
 </html>

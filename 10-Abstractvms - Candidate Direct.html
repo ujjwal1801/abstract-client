@@ -163,8 +163,9 @@
                             <select class="appearance-none block w-40 pl-3 pr-10 py-2 border border-gray-300 rounded-md text-sm leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-blue focus:border-blue text-navy font-medium">
                                 <option>All Statuses</option>
                                 <option>Compliant</option>
-                                <option>Expiring Soon</option>
-                                <option>Non-Compliant</option>
+                                <option>Pending</option>
+                                <option>Expired</option>
+                                <option>Not Applicable</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                                 <i class="fa-solid fa-shield-halved text-xs"></i>
@@ -184,13 +185,19 @@
                     </div>
                 </div>
 
+                <!-- Scope Note -->
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                    <i class="fa-solid fa-circle-info text-blue"></i>
+                    Showing candidates booked to your organisation only.
+                </div>
+
                 <!-- GDPR Warning Notice -->
                 <div class="bg-blue/5 rounded-xl border border-blue/20 p-4">
                     <div class="flex items-start gap-3">
                         <i class="fa-solid fa-shield-halved text-blue mt-0.5"></i>
                         <div>
                             <h4 class="text-sm font-semibold text-navy">GDPR Restricted View</h4>
-                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">Candidate records are restricted to display compliance status and name only to ensure data privacy. Personal details such as Date of Birth, National Insurance numbers, and addresses are hidden.</p>
+                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">Address, date of birth, NI number and next-of-kin details are restricted to Abstract and the supplying agency (XR-002).</p>
                         </div>
                     </div>
                 </div>
@@ -203,9 +210,9 @@
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Candidate Name</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Primary Role</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Supplying Agency</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Supplying Party</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Compliance Status</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Key Requirements</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Licence Validity</th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Actions</span>
                                     </th>
@@ -267,8 +274,8 @@
                                         Omega Resourcing
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning/10 text-warning-700 border border-warning/20">
-                                            <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Expiring Soon
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                                            <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Pending
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -302,8 +309,8 @@
                                         Staffing Pro Ltd
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-danger/10 text-danger border border-danger/20">
-                                            <i class="fa-solid fa-circle-xmark mr-1.5"></i> Non-Compliant
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">
+                                            <i class="fa-solid fa-circle-xmark mr-1.5"></i> Expired
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -333,7 +340,7 @@
                                         FLT Driver
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                                        Omega Resourcing
+                                        Abstract
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success/10 text-success border border-success/20">
@@ -342,7 +349,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <div class="flex gap-2">
-                                            <span title="FLT Licence Valid" class="text-success"><i class="fa-solid fa-truck-ramp-box"></i></span>
+                                            <span title="FLT Licence Valid (exp. 12 Mar 2026)" class="text-success"><i class="fa-solid fa-truck-ramp-box"></i></span>
                                             <span title="Safety Induction Complete" class="text-success"><i class="fa-solid fa-hard-hat"></i></span>
                                         </div>
                                     </td>
